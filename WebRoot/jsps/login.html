@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>欢迎来到xxx旅行网后台管理</title>
+		<link rel="stylesheet" href="Vendor/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/adminLogin.css">
+		
+	</head>
+
+	<body>
+		<div class="box">
+		   <h1>爱旅行网后台管理系统</h1>
+		   <div class="login_box">
+		       <h2>后台管理系统</h2>
+		       <form action="#" id="login" method='post'>
+		        <div class="login_item">
+		          <!-- <label for="loginName">账号</label> -->
+		           <input class="loginName" required="required" id="loginName" type="text" name="account" placeholder="请输入账号"></input>
+		        </div>
+		        <div class="login_item">
+		          <!-- <label for="loginPass">密码</label> -->
+		           <input class="loginPass" required="required" id="loginPass" type="password" name="password" placeholder="请输入密码"></input>
+		        </div>
+		        <a href="admin/index.html" id='login_btn'>登录</a>
+		        <!-- 这里可以是同步验证登录，但未模拟效果，先使用上面的a标签直接跳转到登录界面 
+		        <button id="login_btn"   type="submit">登录</button>
+		        -->
+
+		         <!-- 登录失败信息提示 -->
+		        <div class="msg"></div>
+		       </form>
+		   </div>
+		</div>
+		<script src="Vendor/bootstrap/js/jquery.js"></script>
+		<script src="Vendor/bootstrap/js/bootstrap.min.js"></script>
+	</body>
+
+</html>

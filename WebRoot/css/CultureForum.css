@@ -1,0 +1,177 @@
+/*
+ * author:mcf
+ * time:2016-4-8
+ * description:文化论坛样式
+ * 复用了index.css的样式，考虑抽取共同样式！！！
+ */
+body{
+	font-family: "微软雅黑";
+	color:#666;
+	font-size: 16px;
+	background: #EBEBEB;
+	padding-top:70px;
+}
+
+/*固定导航条*/
+.navbar-default{
+	background: #fff;
+	border-top: 2px solid #E67E22;
+	border-bottom: 1px solid #eee;
+}
+/*轮播图部分*/
+.Carousel{
+	width: 100%;height:auto;
+	background: #fff;;
+	margin-bottom: 10px;
+}
+.height_20{
+	height:20px;
+}
+
+/*左侧内容部分
+.post{
+	background:#fff;
+	padding:35px;
+	margin-bottom:35px;
+}
+.post-head{
+	text-align:center;
+}
+.post .post-head .post-title{
+	margin:0;
+	font-size:2.5em;
+	line-height:1em;
+}
+.post .post-head .post-title a{
+	color:#303030;;
+}
+.post .post-meta{
+	color:#959595;
+	margin:14px 0px;
+	text-align:center;
+}
+.post .post-content{
+	font:400 17px/1.62 "Glyphicons Halflings";
+	color:#000;
+}
+.post .post-content p{
+	margin-top:0;
+	margin-bottom:1.46em;
+}
+.btn{
+	padding:7px 14px;
+	border-radius:2px;
+}
+.btn-default{
+	border:1px solid #e67e22;
+	background:#e67e22;
+	color:#fff;
+}
+.btn:hover{
+	background:#000;color:#fff;
+}
+.post .post-footer .tag-list{
+	color:#959595;
+	line-height:28px;
+}*/
+/*右侧部分*/
+.sidebar .widget{
+	background:#fff;
+	padding:21px 30px;
+	margin-bottom:35px;
+
+}
+.widget .title{
+	border-bottom:1px solid #ebebeb;
+	margin-top:0;
+	margin-bottom:21px;
+	padding-bottom:7px;
+	position:relative;
+}
+.widget .title:after{
+	content:"";
+	height:1px;width:90px;
+	position:absolute;
+	bottom:-1px;left:0;
+	background:#e67e22;
+}
+.widget .tag-cloud a{
+	display: inline-block;
+	border:1px solid #ebebeb;
+	padding:2px 7px;
+	color:#959595;
+	line-height:1.5em;
+	margin:0 7px 7px 0;
+}
+.main-footer{
+	background:#202020;
+	padding:35px 0 ;
+}
+.main-footer .widget{
+	margin-bottom:35px;
+}
+.main-footer .widget .title{
+	color:#fff;
+	border-bottom:1px solid #ebebeb;
+}
+.main-footer .recent-post .recent-single-post{
+	border-bottom:1px dashed #303030;
+	padding-bottom:14px;
+	margin-bottom:14px;
+}
+.main-footer .widget  .recent-post .recent-single-post .post-title{
+	color:#959595;
+}
+.main-footer .widget .rencent-post .recent-single-post .date{
+	color:#505050;
+}
+.main-footer .widget .tag-cloud a{
+	border:1px solid #303030;
+	transition:all 0.2s ease-in;
+}
+.main-footer .widget .tag-cloud a:hover{
+	background:#e67e22;
+	color:#fff;
+}
+p.banquan{
+	text-align: center;
+}
+/*回到顶部*/
+.scrollTop{
+	width:30px;height:30px;line-height:30px;
+	position: fixed;
+	right:40px;bottom:70px;
+	background: #fff;
+	text-align: center;
+	
+}
+.scrollTop:hover span{
+	transition:all .5s linear;
+}
+.scrollTop:hover span{
+	color:#E67E22;
+}
+/*左侧部分*/
+.post{
+	background:#fff;
+	padding:35px;
+	margin-bottom:35px;
+}
+.post .title{
+	border-bottom:1px solid #ebebeb;
+	margin-top:0;
+	margin-bottom:21px;
+	padding-bottom:7px;
+	position:relative;
+}
+.post .title:after{
+	content:"";
+	height:1px;width:90px;
+	position:absolute;
+	bottom:-1px;left:0;
+	background:#e67e22;
+}
+.content  .item{
+	margin:10px auto;
+	
+}
