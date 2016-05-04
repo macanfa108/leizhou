@@ -54,6 +54,17 @@ public class ThingServlet extends HttpServlet {
 		if (method == 7) {
 			//this.HeadAddRestore(request, response);
 		}
+		if (method == 8) {
+			this.topThing(request, response);
+		}
+	}
+	
+	public void topThing(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=GBK");
+		PrintWriter out = response.getWriter();
+		out.print("<script language=javascript>alert('置顶精品成功！');window.location.href='head_ArticleForm.jsp?id="+request.getParameter("articleId")+"';</script>");
+		
 	}
     /*
 	public void HeadAddRestore(HttpServletRequest request,
@@ -102,8 +113,8 @@ public class ThingServlet extends HttpServlet {
 		ThingBean thingForm = new ThingBean();
 		thingDao = new ThingDao();
 		thingForm.setThingId(Integer.valueOf(request.getParameter("id")));
-		thingDao.operationArticle("增加", thingForm);
-		request.setAttribute("form", thingDao.queryArticleForm(Integer
+		thingDao.operationThing("增加", thingForm);
+		request.setAttribute("form", thingDao.queryThingForm(Integer
 				.valueOf(request.getParameter("id"))));
 		RequestDispatcher requestDispatcher = request
 				.getRequestDispatcher("headstage_ThingSelect.jsp");
@@ -139,7 +150,7 @@ public class ThingServlet extends HttpServlet {
 		ThingBean thingForm = new ThingBean();
 		thingForm.setThingId(Integer.valueOf(request.getParameter("id")));
 		thingDao = new ThingDao();
-		if (thingDao.operationArticle("删除", thingForm)) {
+		if (thingDao.operationThing("删除", thingForm)) {
 			out
 					.print("<script language=javascript>alert('删除新闻成功，请重新查询！');window.location.href='backstage_ThingSelect.jsp';</script>");
 		} else {
@@ -180,7 +191,7 @@ public class ThingServlet extends HttpServlet {
 		String result = "上传的照片格式和大小有问题,上传照片失败!";
 		String type = null;
 		String imageType[] = { "JPG", "jpg", "gif", "bmp", "BMP" };
-		String filedir = "file/";
+		String filedir = "file2/";
 		long maxsize = 2 * 1024 * 1024; // 设置每个上传文件的大小，为2MB
 		try {
 			su.initialize(this.getServletConfig(), request, response);
@@ -205,7 +216,7 @@ public class ThingServlet extends HttpServlet {
 							thingForm.setPhotoURL(filedir);
 							thingForm.setLikeNum(0);
 							
-							if (thingDao.operationArticle("添加", thingForm)) {
+							if (thingDao.operationThing("添加", thingForm)) {
 								singlefile.saveAs(filedir, File.SAVEAS_VIRTUAL);
 								//result = "上传照片成功!";
 							}
@@ -258,7 +269,7 @@ public class ThingServlet extends HttpServlet {
 		String result = "上传的照片格式和大小有问题,上传照片失败!";
 		String type = null;
 		String imageType[] = { "JPG", "jpg", "gif", "bmp", "BMP" };
-		String filedir = "file/";
+		String filedir = "file1/";
 		long maxsize = 2 * 1024 * 1024; // 设置每个上传文件的大小，为2MB
 		try {
 			su.initialize(this.getServletConfig(), request, response);

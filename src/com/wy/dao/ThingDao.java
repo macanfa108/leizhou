@@ -18,7 +18,7 @@ public class ThingDao {
 		connection = new JDBConnection();
 	}
 
-	public boolean operationArticle(String operation, ThingBean form) {
+	public boolean operationThing(String operation, ThingBean form) {
 		boolean flag = false;
 		String sql = null;
 		Integer num;
@@ -44,7 +44,7 @@ public class ThingDao {
 	}
 	
 
-	public List queryArticle(String typeName) {
+	public List queryThing(String typeName) {
 		List list = new ArrayList();
 		String sql = null;
 		if (typeName == null)
@@ -77,9 +77,34 @@ public class ThingDao {
 	}
 	
 	
-	public List topArticle(int id) {
+	public List topThing(String thingId) {
 		List list = new ArrayList();
-		String sql = "select * from tb_thing,tb_type where tb_thing.typeId=tb_type.typeId and thingId="+id;
+		String sql;
+		if(thingId==null){
+			sql="select top 5 * from tb_thing,tb_type where tb_thing.typeId=tb_type.typeId order by thingId desc";
+			try {
+				ResultSet rs = connection.executeQuery(sql);
+				while (rs.next()) {
+					thingForm = new ThingBean();
+					thingForm.setThingId(rs.getInt(1));
+					thingForm.setTypeId(rs.getInt(2));
+					thingForm.setThingName(rs.getString(3));
+					thingForm.setThingContent(rs.getString(4));
+					thingForm.setThingTime(rs.getString(5));
+					thingForm.setPhotoURL(rs.getString(6));
+					thingForm.setLikeNum(rs.getInt(7));
+
+					thingForm.setTypeName(rs.getString(9));
+					list.add(thingForm);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		else{
+		int id=Integer.parseInt(thingId);
+		sql= "select * from tb_thing,tb_type where tb_thing.typeId=tb_type.typeId and thingId="+id;
 		
 		try {
 			ResultSet rs = connection.executeQuery(sql);
@@ -120,10 +145,11 @@ public class ThingDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		}
 		return list;
 	}
 
-	public ThingBean queryArticleForm(Integer id) {
+	public ThingBean queryThingForm(Integer id) {
 		String sql = "select * from tb_thing where id=" + id ;
 		ResultSet rs = connection.executeQuery(sql);
 		try {
@@ -141,7 +167,7 @@ public class ThingDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		this.operationArticle("增加", thingForm);
+		this.operationThing("增加", thingForm);
 		return thingForm;
 	}
 	

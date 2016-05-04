@@ -16,7 +16,7 @@ public class AnnounceDao {
 		connection = new JDBConnection();
 	}
 
-	public boolean operationDiscuss(String operation, AnnounceBean disussForm) {
+	public boolean operationAnnounce(String operation, AnnounceBean disussForm) {
 		boolean flag = false;
 		String sql = null;
 		if (operation.equals("删除"))
@@ -37,7 +37,7 @@ public class AnnounceDao {
 	}
 	
 	//审核话题
-	public boolean upDiscuss(Integer id) {
+	public boolean upAnnounce(Integer id) {
 		boolean flag = false;
 		String sql = "update tb_announce set announceStatus='已审核' where announceId="+id;
 		
@@ -47,17 +47,19 @@ public class AnnounceDao {
 	}
     
     //全部查询与模糊查询
-	public List queryDiscuss(String announceName,String announceStatus) {
+	public List queryAnnounce(String announceName,String announceStatus) {
 		List list = new ArrayList();
 		AnnounceBean form = null;
 		String sql;
-		if(announceName.equals("")){
+		//System.out.println("announceName="+announceName);
+		if(announceName==null){
 			sql = "select * from tb_announce where announceStatus='"+announceStatus+"' order by announceId desc";
 			
 		}
 		else
-			sql = "select * from tb_announce where announceStatus='"+announceStatus+"' and announceName like '%"+announceName+"%' order by discussId desc";
+			sql = "select * from tb_announce where announceStatus='"+announceStatus+"' and announceTitle like '%"+announceName+"%' order by announceId desc";
 		try { 
+			//System.out.println("sql="+sql);
 			ResultSet rs = connection.executeQuery(sql);
 			while (rs.next()) {
 				form = new AnnounceBean();
@@ -77,11 +79,31 @@ public class AnnounceDao {
 	
 	
 	//置顶查询
-	public List topDiscuss(int id) {
+	public List topAnnounce(String announceId) {
 		List list = new ArrayList();
 		AnnounceBean form = null;
+		//System.out.println(announceId);
 		String sql;
+		if(announceId==null){
+			sql="select top 5 * from tb_announce where announceStatus='已审核' order by announceId desc";
+			try {
+				ResultSet rs = connection.executeQuery(sql);
+				while (rs.next()) {
+					form = new AnnounceBean();
+					form.setAnnounceId(Integer.valueOf(rs.getString(1)));
+					form.setAnnounceTitle(rs.getString(2));
+					form.setAnnounceContent(rs.getString(3));
+					form.setAnnounceTime(rs.getString(4));
+					form.setAnnounceStatus(rs.getString(5));
+					list.add(form);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
+		else{
+			int id=Integer.parseInt(announceId);
 			//sql = "select * from tb_discuss order by discussId desc";
 			sql = "select * from tb_announce where announceId="+id;
 			try {
@@ -99,7 +121,7 @@ public class AnnounceDao {
 				e.printStackTrace();
 			}
 			
-			String sql1 = "select top 4 * from tb_announce where announceId <>"+id+" order by announceId desc";
+			String sql1 = "select top 4 * from tb_announce where announceId <>"+id+" and announceStatus='已审核' order by announceId desc";
 		
 		try {
 			ResultSet rs = connection.executeQuery(sql1);
@@ -117,12 +139,14 @@ public class AnnounceDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		}
+		System.out.println(sql);
 		return list;
 
 	}
 	
 	
-	public AnnounceBean queryDiscuss(Integer id) {
+	public AnnounceBean queryAnnounce(Integer id) {
 		AnnounceBean form = null;
 		String sql = "select * from tb_announce where announceId='"+id+"'";
 		try {

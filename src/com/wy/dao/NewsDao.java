@@ -71,9 +71,32 @@ public class NewsDao {
 	}
 	
 	
-	public List topNews(int id) {
+	public List topNews(String newsId) {
 		List list = new ArrayList();
-		String sql = "select * from tb_news where newsId="+id;
+		String sql;
+		if(newsId==null){
+			sql="select  * from tb_news order by newsId desc";
+			try {
+				ResultSet rs = connection.executeQuery(sql);
+				while (rs.next()) {
+					newsForm = new NewsBean();
+					newsForm.setNewsId(rs.getInt(1));
+					newsForm.setNewsTitle(rs.getString(2));
+					newsForm.setNewsContent(rs.getString(3));
+					newsForm.setNewsTime(rs.getString(4));
+					newsForm.setPhotoURL(rs.getString(5));
+					newsForm.setReadNum(rs.getInt(6));
+					list.add(newsForm);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		else{
+			int id=Integer.parseInt(newsId);
+			//System.out.println("id="+id);
+		sql= "select * from tb_news where newsId="+id;
 		
 		try {
 			ResultSet rs = connection.executeQuery(sql);
@@ -91,10 +114,10 @@ public class NewsDao {
 			e.printStackTrace();
 		}
 		
-String sql1 = "select top 4 * from tb_news where newsId<>"+id+"order by newsId desc";
+        String sql1 = "select * from tb_news where newsId<>"+id+"order by newsId desc";
 		
 		try {
-			ResultSet rs = connection.executeQuery(sql);
+			ResultSet rs = connection.executeQuery(sql1);
 			while (rs.next()) {
 				newsForm = new NewsBean();
 				newsForm.setNewsId(rs.getInt(1));
@@ -107,6 +130,7 @@ String sql1 = "select top 4 * from tb_news where newsId<>"+id+"order by newsId d
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
 		}
 		return list;
 	}

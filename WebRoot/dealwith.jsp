@@ -9,10 +9,15 @@
 			//提示框提示失败，页面返回用户登入页面
 			out.print("<script language=javascript>alert('"
 			+ information + "');history.go(-1);</script>");
-		} else {
+		} else if(request.getAttribute("infor") != null){
 			session.setAttribute("form", request.getAttribute("form"));
 			//重新定位到首页面head_main.jsp
-			out.print("<script language=javascript>alert('用户登录成功！');window.location.href='backstage_userSelect.jsp';</script>");
+			session.setAttribute("u", request.getAttribute("uName"));
+			out.print("<script language=javascript>alert('用户登录成功！');window.location.href='index.jsp?u="+session.getAttribute("u")+"';</script>");
+		}else{
+			session.setAttribute("form", request.getAttribute("form"));
+			//重新定位到首页面head_main.jsp
+			out.print("<script language=javascript>alert('管理员登录成功！');window.location.href='backstage_userSelect.jsp';</script>");
 		}
 	}
 	if (sign == 1) {
@@ -20,7 +25,7 @@
 		if (result.equals("success")) {
 			session.setAttribute("form", request.getAttribute("form"));
 			out
-			.print("<script language=javascript>alert('用户注册成功！');window.location.href='backstage_userSelect.jsp';</script>");
+			.print("<script language=javascript>alert('用户注册成功！');window.location.href='index.jsp';</script>");
 		}
 		if (result.equals("fail")) {
 			out

@@ -90,16 +90,8 @@ public class DiscussServlet extends HttpServlet {
 				HttpServletResponse response) throws ServletException, IOException {
 			response.setContentType("text/html;charset=GBK");
 			PrintWriter out = response.getWriter();
-			DiscussBean disussForm = new DiscussBean();
-			disussDao = new DiscussDao();
-			disussForm.setDiscussId(Integer.valueOf(request.getParameter("id")));
-			if (disussDao.operationDiscuss("置顶", disussForm)) {
-				out
-						.print("<script language=javascript>alert('置顶公告成功！');window.location.href='backstage_DiscussSelect.jsp';</script>");
-			} else {
-				out
-						.print("<script language=javascript>alert('置顶公告失败！');history.go(-1);</script>");
-			}
+			out.print("<script language=javascript>alert('置顶公告成功！');window.location.href='backstage_DiscussSelect.jsp';</script>");
+			
 
 		}
 

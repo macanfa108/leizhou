@@ -36,14 +36,18 @@
 	scope="session"></jsp:useBean>
 <jsp:useBean id="announceDao" class="com.wy.dao.AnnounceDao"
 	scope="session"></jsp:useBean>
+	<jsp:useBean id="chinese" class="com.wy.tool.Chinese"
+	scope="session"></jsp:useBean>
 <%
-	String str = (String) request.getParameter("Page");
-	//String s=(String)request.getParameter("discussName");
-	String s = "";
+
+String str = (String) request.getParameter("Page");
+String s=chinese.toChinese((String)request.getParameter("announceName"));
+
+	//String s = "";
 	int Page = 1;
 	List list = null;
 	if (str == null) {
-		list = announceDao.queryDiscuss(s, "已审核");
+		list = announceDao.queryAnnounce(s, "已审核");
 		int pagesize = 10; //指定每页显示的记录数
 		list = pagination.getInitPage(list, Page, pagesize); //初始化分页信息
 	} else {
@@ -56,23 +60,32 @@
 	function deleteForm(id) {
 		if (confirm("确定要删除此话题吗？")) {
 			window.location.href = "AnnounceServlet?method=1&id=" + id;
+			
 		}
 	}
 </script>
 
-<!-- 
+
 <script type="text/javascript">
 function topForm(id){
 if(confirm("确定要置顶此公告信息吗？")){
 window.location.href="DiscussServlet?method=3&id="+id;
+window.location.href = "backstage_AnnounceSelect.jsp?id=" + id;
 }
 }
 </script>
- -->
+
 
 </head>
 
 <body>
+<% session.setAttribute("aId",(String) request.getParameter("id")); 
+           String a=(String)session.getAttribute("aId");
+          //Integer a=(Integer)session.getAttribute("aId");
+           //System.out.println(a);
+           
+           
+           %>
 
 
 	<!--红色区域部分-->
@@ -87,8 +100,11 @@ window.location.href="DiscussServlet?method=3&id="+id;
 				</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-						<li><a href="javascript:;">您好！&nbsp;&nbsp;admin</a></li>
-						<li><a href="backstage_login.jsp">注销</a></li>
+						<li><a href="javascript:;">您好！&nbsp;admin&nbsp;&nbsp;</a></li>
+						<%
+						session.setAttribute("u","admin");
+						%>
+						<li><a href="index.jsp?u="+session.getAttribute("u") >首页</a></li>
 					</ul>
 
 				</div>
@@ -160,6 +176,7 @@ window.location.href="DiscussServlet?method=3&id="+id;
 								class="icon-chevron-right"></i></span></a>
 						<ul>
 							<li><a href="backstage_userSelect.jsp">用户列表</a></li>
+							<li><a href="backstage_UserBeijinSelect.jsp">用户被禁列表</a></li>
 							<li><a href="Backstage_updatePassword.jsp">修改密码</a></li>
 						</ul></li>
 				</ul>
@@ -186,7 +203,7 @@ if(pagination.getRecordSize()<=0){
 				<div class="box-body">
 
 					<form align="right" class="form-search s-widget" name="form1"
-						method="post" action="backstage_DiscussNameSelect.jsp"
+						method="post" action="backstage_AnnounceSelect.jsp"
 						onSubmit="return userCheck()">
 						<span style="width:100px;height:50px;bgcolor:yellow;float:left;"
 							font-size:16pt>
@@ -197,7 +214,7 @@ if(pagination.getRecordSize()<=0){
 						<div class="input-append">
 
 							<input type="text" id="inputPassword" placeholder="请输入公告名"
-								style="height:31px;width:200px" name="discussName">
+								style="height:31px;width:200px" name="announceName">
 							<button type="submit" class="btn btn-danger">查询</button>
 						</div>
 					</form>
@@ -230,10 +247,12 @@ if(pagination.getRecordSize()<=0){
 							<!--   
              <td><div align="center" bgcolor="#009393"><a href="javascript:deleteForm('<%=discussForm.getAnnounceId()%>')" title="可以查看相应的公告内容">置顶</a>&nbsp;&nbsp;<a href="javascript:deleteForm('<%=discussForm.getAnnounceId()%>')">删除</a></div></td>
            -->
-							<td><a
-								href="backstage_AnnounceTopSelect.jsp?id=<%=discussForm.getAnnounceId()%>"
-								title="可以查看相应的公告内容" class="btn btn-info">置顶</a>&nbsp;&nbsp; <a
-								href="javascript:deleteForm('<%=discussForm.getAnnounceId()%>')"
+           
+							<td>
+							<%-- <a href="backstage_AnnounceTopSelect.jsp?id=<%=discussForm.getAnnounceId()%>"
+								title="可以查看相应的公告内容" class="btn btn-info">置顶</a>&nbsp;&nbsp; --%>
+								<a href="javascript:topForm('<%=discussForm.getAnnounceId()%>')" title="可以查看相应的公告内容" class="btn btn-info">置顶</a>&nbsp;&nbsp;
+								<a href="javascript:deleteForm('<%=discussForm.getAnnounceId()%>')"
 								class="btn btn-danger">删除</a></td>
 						</tr>
 						<%

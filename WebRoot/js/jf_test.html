@@ -1,0 +1,128 @@
+
+<html>
+<head>
+<title>上传头像</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit"><!--用在360中-->
+<meta name="force-rendering" content="webkit"><!--用在其它-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<link href="../plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="jquery.js"></script>
+<script src="../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="jquery.form.js"></script>
+<style type="text/css">
+    .account-wrap .upload_img_form {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%%
+        width: 275px;
+    }
+    
+    .account-wrap .upload_img_form input {
+        margin-top: 0;
+        margin-bottom: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        height: 100%%;
+        width: 75px;
+    }
+    .account-wrap .btn-modify {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+    }
+</style>
+</head>
+<body class="img-background">
+    <div class="container min-width980 account-wrap" style="padding-top: 110px;">
+        <div class="relative-padd">
+            <div class="border-dedede account-detail backgroundff">
+                <div class="row row-one mar-left-right00 ">
+                    <div class="col-xs-12 dashed-bottom padding20">
+                        <div class="row">
+                            <div class="col-xs-2 relative">
+                                <form id="upload-form" method = 'post'  action = '../../upload_image'>
+                                    <div class="width75 inline-block text-center">
+                                        <a class="img-a checked-head fileinput-new span6 modify-span btn-modify" id="progressNumber" style="cursor: pointer;">修改</a>
+                                        <div class="upload_img_form">
+                                            <input class="upload-input" type="file" name="fileToUpload" id="fileToUpload" accept="image/jpg,image/png,image/jpeg" enctype="multipart/form-data">
+                                        </div>
+                                    </div>
+                                   
+                                </form>
+                                 <button id="submit" class="hidden">提交</button>
+                            </div>
+                             <div id="progress">
+                                <div id="bar"></div>
+                                <div id="percent">0%%</div >
+                        </div>
+                            <div class="col-xs-10">
+                                <img class="img-show" src="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+//上传图片
+$('.account-wrap').find('.upload-input').off('change').on('change', function () {
+    function showRequest(formData, jqForm, options){
+        // formData: 数组对象，提交表单时，form插件会以ajax方式自动提交这些数据，格式如[{name:user,value:val},{name:pwd,value:pwd}]
+        // jqForm: jQuery对象，封装了表单的元素
+        // options: options对象
+       // var queryString = $.param(formData); // name=1&address=2
+        //var formElement = jqForm[0]; // 将jqForm转换为DOM对象
+        //alert(3)
+        //var fileToUpload = formElement.fileToUpload.value; // 访问jqForm的DOM元素
+        $("#progress").show();
+            //clear everything
+        $("#bar").width('0%%');
+        $("#message").html("");
+        $("#percent").html("0%%");
+        return true; // 只要不返回false，表单都会提交，在这里可以对表单元素进行验证
+    }
+    function showResponse(res){
+        var result = res.replace(/<pre[^>]*>/gi, "").replace(/<\/pre>/gi, '');
+       // alert(result)
+        var id = result;
+        $('.img-show').attr('src', '/pic?id=' + id).css('width', '250px');
+    }
+    $('#submit').on('click', function() {
+        var $this = $(this);
+    var options = {
+        target : $this,    // 把服务器返回的内容放入id为output的元素中
+        beforeSubmit : showRequest,    // 提交前的回调函数
+        uploadProgress: function(event, position, total, percentComplete) 
+        {
+            $("#bar").width(percentComplete+'%%');
+            $("#percent").html(percentComplete+'%%');
+
+        },
+        success : showResponse,    // 提交后的回调函数
+        url : '../../upload_image',    //默认是form的action，如果申明，则会覆盖
+        type : 'post',    // 默认值是form的method("GET" or "POST")，如果声明，则会覆盖
+        // dataType : null,    // html（默认）、xml、script、json接受服务器端返回的类型
+        clearForm : true,    // 成功提交后，清除所有表单元素的值
+        resetForm : true,    // 成功提交后，重置所有表单元素的值
+        timeout : 3000    // 限制请求的时间，当请求大于3秒后，跳出请求
+    }
+        $('#upload-form').ajaxSubmit(options); 
+    })
+    $('#submit').trigger("click");
+   
+
+})
+
+$(document).ready(function() {
+
+})
+</script>
+</html>

@@ -34,12 +34,15 @@
 <jsp:useBean id="pagination" class="com.wy.tool.MyPagination"
 	scope="session"></jsp:useBean>
 <jsp:useBean id="consumerDao" class="com.wy.dao.UserDao" scope="session"></jsp:useBean>
+<jsp:useBean id="chinese" class="com.wy.tool.Chinese" scope="session"></jsp:useBean>
+
 <%
 	String str = (String) request.getParameter("Page");
+String s = (String) request.getParameter("userName");
 	int Page = 1;
 	List list = null;
 	if (str == null) {
-		list = consumerDao.getConsumerList("普通", "");
+		list = consumerDao.getConsumerList("普通", s);
 		int pagesize = 10; //指定每页显示的记录数
 		list = pagination.getInitPage(list, Page, pagesize); //初始化分页信息
 	} else {
@@ -49,9 +52,9 @@
 %>
 
 <script type="text/javascript">
-	function deleteForm(account) {
+	function deleteForm(userName) {
 		if (confirm("确定要禁止此用户吗？")) {
-			window.location.href = "UserServlet?method=3&account=" + account;
+			window.location.href = "UserServlet?method=3&userName=" + userName;
 		}
 	}
 </script>
@@ -74,7 +77,10 @@
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
 						<li><a href="backstage_login.jsp">您好！&nbsp;&nbsp;admin</a></li>
-						<li><a href="backstage_login.jsp">注销</a></li>
+						<%
+						session.setAttribute("u","admin");
+						%>
+						<li><a href="index.jsp?u="+session.getAttribute("u") >首页</a>
 					</ul>
 
 				</div>
@@ -146,6 +152,7 @@
 								class="icon-chevron-right"></i></span></a>
 						<ul>
 							<li><a href="backstage_userSelect.jsp">用户列表</a></li>
+							<li><a href="backstage_UserBeijinSelect.jsp">用户被禁列表</a></li>
 							<li><a href="Backstage_updatePassword.jsp">修改密码</a></li>
 						</ul></li>
 				</ul>
@@ -171,14 +178,14 @@ if(pagination.getRecordSize()<=0){
 --%>
 				<div class="box-body">
 					<form align="right" class="form-search s-widget" name="form1"
-						method="post" action="backstage_UserNameSelect.jsp"
+						method="post" action="backstage_userSelect.jsp"
 						onSubmit="return userCheck()">
 						<span style="width:100px;height:50px;bgcolor:yellow;float:left;font-size:18px;"
 							><h1>用户列表</h1></span>
 						<div class="input-append">
 
 							<input type="text" id="inputPassword" placeholder="请输入登录名"
-								style="height:31px;width:200px" name="selectName">
+								style="height:31px;width:200px" name="userName">
 							<button type="submit" class="btn btn-danger">查询</button>
 						</div>
 					</form>
@@ -203,10 +210,7 @@ if(pagination.getRecordSize()<=0){
 							<td><%=consumerForm.getRealName()%></td>
 							<td ><%=consumerForm.getTelNumber()%></td>
 							<td><%=consumerForm.getStatus()%></td>
-							<td><a
-							class='btn btn-success'
-								href="UserServlet?method=2&account=<%=consumerForm.getName()%>">解禁</a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<a class='btn btn-danger'  href="javascript:deleteForm('<%=consumerForm.getName()%>')">禁止</a></td>
+							<td><a class='btn btn-danger'  href="javascript:deleteForm('<%=consumerForm.getName()%>')">禁止</a></td>
 						</tr>
 						<%
 							}

@@ -2,12 +2,10 @@ package com.wy.dao;
 
 import com.wy.bean.DiscussBean;
 import com.wy.tool.*;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
-import java.util.Collections
-
-;
 
 public class DiscussDao {
 	private JDBConnection connection = null;
@@ -44,7 +42,7 @@ public class DiscussDao {
 		List list = new ArrayList();
 		DiscussBean form = null;
 		String sql;
-		if(discussName.equals("")){
+		if(discussName==null){
 			sql = "select * from tb_discuss order by discussId desc";
 			
 		}
@@ -71,11 +69,30 @@ public class DiscussDao {
 	
 	
 	//÷√∂•≤È—Ø
-	public List topDiscuss(int id) {
+	public List topDiscuss(String discussId) {
 		List list = new ArrayList();
 		DiscussBean form = null;
 		String sql;
-		
+		if(discussId==null){
+			sql="select * from tb_discuss order by discussId desc";
+			try {
+				ResultSet rs = connection.executeQuery(sql);
+				while (rs.next()) {
+					form = new DiscussBean();
+					form.setDiscussId(Integer.valueOf(rs.getString(1)));
+				
+					
+					form.setDiscussTitle(rs.getString(2));
+					form.setDiscussContent(rs.getString(3));
+					form.setDiscussTime(rs.getString(4));
+					list.add(form);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else{
+			int id=Integer.parseInt(discussId);
 			//sql = "select * from tb_discuss order by discussId desc";
 			sql = "select * from tb_discuss where discussId="+id;
 			try {
@@ -94,7 +111,7 @@ public class DiscussDao {
 				e.printStackTrace();
 			}
 			
-			String sql1 = "select top 4 * from tb_discuss where discussId <>"+id+" order by discussId desc";
+			String sql1 = "select * from tb_discuss where discussId <>"+id+" order by discussId desc";
 		
 		try {
 			ResultSet rs = connection.executeQuery(sql1);
@@ -110,6 +127,7 @@ public class DiscussDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
 		}
 		return list;
 

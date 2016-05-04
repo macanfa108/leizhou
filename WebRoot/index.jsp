@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,12 +9,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>转发到首页</title>
+    <title>ת������ҳ</title>
 
   </head>
   
   <body>
-    跳转到首页！
+    ��ת����ҳ��
     <jsp:forward  page='/jsps/index.jsp' />
   </body>
 </html>

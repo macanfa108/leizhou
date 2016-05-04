@@ -21,10 +21,10 @@ public class UserServlet extends HttpServlet {
 			registerConsumer(request, response);// 用户注册操作
 		}
 		if (method == 2) {
-			queryConsumerForm(request, response);// 后台操作中，对一个用户进行解禁
+			jiejinUser(request, response);// 后台操作中，对一个用户进行解禁禁止
 		}
 		if (method == 3) {
-			deleteConsumerForm(request, response);// 后台操作中，对用户进行禁止操作
+			jinzhiUser(request, response);// 后台操作中,禁止用户
 		}
 		if (method == 4) {
 			queryConsumerHostForm(request, response); // 后台操作中，对博主的查询操作
@@ -98,13 +98,13 @@ public class UserServlet extends HttpServlet {
 	}
 
 	// 后台操作中，对用户进行禁止操作
-	public void deleteConsumerForm(HttpServletRequest request,
+	public void jinzhiUser(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=GBK");
-		String telNumber = Chinese.toChinese(request.getParameter("account"));
+		String telNumber = Chinese.toChinese(request.getParameter("userName"));
 		userDao = new UserDao();
 		PrintWriter out = response.getWriter();
-		if (userDao.deleteConsumerForm("被禁",telNumber)) {
+		if (userDao.oprationUser("被禁",telNumber)) {
 			out
 					.print("<script language=javascript>alert('禁止此用户成功！');window.location.href='backstage_userSelect.jsp';</script>");
 		} else {
@@ -127,7 +127,7 @@ public class UserServlet extends HttpServlet {
 	
 
 	// 后台操作中，对一个用户进行解禁
-	public void queryConsumerForm(HttpServletRequest request,
+	public void jiejinUser(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		/*userDao = new UserDao();
 		String account = Chinese.toChinese(request.getParameter("account"));
@@ -137,12 +137,12 @@ public class UserServlet extends HttpServlet {
 		requestDispatcher.forward(request, response);
 		*/
 		response.setContentType("text/html;charset=GBK");
-		String telNumber = Chinese.toChinese(request.getParameter("account"));
+		String telNumber = Chinese.toChinese(request.getParameter("userName"));
 		userDao = new UserDao();
 		PrintWriter out = response.getWriter();
-		if (userDao.deleteConsumerForm("普通",telNumber)) {
+		if (userDao.oprationUser("普通",telNumber)) {
 			out
-					.print("<script language=javascript>alert('此用户解禁成功！');window.location.href='backstage_userSelect.jsp';</script>");
+					.print("<script language=javascript>alert('此用户解禁成功！');window.location.href='backstage_UserBeijinSelect.jsp';</script>");
 		} else {
 			out
 					.print("<script language=javascript>alert('解禁用户失败！');history.go(-1);</script>");
@@ -205,12 +205,16 @@ public class UserServlet extends HttpServlet {
 		} else if (!consumerForm.getPassword().equals(
 				request.getParameter("password"))) {
 			request.setAttribute("information", "您输入的登录密码有误，请重新输入！");
+		} else if (consumerForm.getStatus().equals("被禁")) {
+			request.setAttribute("information", "您的账号被禁，请联系13727593126！");
 		} else if (!consumerForm.getStatus().equals("管理员")) {
-			request.setAttribute("information", "您没有权限进入后台管理系统！");}
-	    else {
-
+			//request.setAttribute("infor", "您没有权限进入后台管理系统！");
+			request.setAttribute("infor", "普通");
 			request.setAttribute("form", consumerForm);
-		}
+			request.setAttribute("uName", account);}
+	    else {
+			request.setAttribute("form", consumerForm);
+			request.setAttribute("uName", account);}
 		
 		//转向一个页
 		RequestDispatcher requestDispatcher = request

@@ -35,10 +35,13 @@
 <jsp:useBean id="announceDao" class="com.wy.dao.AnnounceDao" scope="session"></jsp:useBean>
 <%
 String str=(String)request.getParameter("Page");
+//String s=request.getParameter("id");
+String ss=(String)session.getAttribute("aId");
+
 int Page=1;
 List list=null;
 if(str==null){
-	list=announceDao.topDiscuss( Integer.parseInt(request.getParameter("id")));
+	list=announceDao.topAnnounce(ss);
 	int pagesize=10;      //指定每页显示的记录数
 	list=pagination.getInitPage(list,Page,pagesize);     //初始化分页信息
 }else{
@@ -84,12 +87,15 @@ window.location.href="DiscussServlet?method=3&id="+id;
         <div class="nav-collapse collapse">
           <ul class="nav pull-right">
           <li><a href="backstage_login.jsp">您好！&nbsp;&nbsp;admin</a></li>
-		    <li><a href="backstage_login.jsp">注销</a></li>
-             </ul>
-            </li> 
+						<%
+						session.setAttribute("u","admin");
+						%>
+						<li><a href="index.jsp?u="+session.getAttribute("u") >首页</a></li>
+					 </ul>
+           
 
              
-          </ul>
+        
         </div>
       </div>
     </div>
@@ -151,6 +157,7 @@ window.location.href="DiscussServlet?method=3&id="+id;
             <li class="has_sub"><a href="#" class="br-yellow"><i class="icon-user"></i> 安全管理 <span class="pull-right"><i class="icon-chevron-right"></i></span></a>
 			<ul>
                 <li><a href="backstage_userSelect.jsp">用户列表</a></li>
+                <li><a href="backstage_UserBeijinSelect.jsp">用户被禁列表</a></li>
                 <li><a href="Backstage_updatePassword.jsp">修改密码</a></li>
               </ul>
             </li> 
@@ -222,7 +229,9 @@ if(pagination.getRecordSize()<=0){
              <td><div align="center" bgcolor="#009393"><a href="javascript:deleteForm('<%=discussForm.getAnnounceId()%>')" title="可以查看相应的公告内容">置顶</a>&nbsp;&nbsp;<a href="javascript:deleteForm('<%=discussForm.getAnnounceId()%>')">删除</a></div></td>
            -->
               <td>
+              <%-- 
               <a href="backstage_AnnounceTopSelect.jsp?id=<%=discussForm.getAnnounceId()%>" title="可以查看相应的公告内容" class="btn btn-info">置顶</a>&nbsp;&nbsp;
+              --%>
               <a href="javascript:deleteForm('<%=discussForm.getAnnounceId()%>')" class="btn btn-danger">删除</a></td>
             </tr>
 			<%} %>

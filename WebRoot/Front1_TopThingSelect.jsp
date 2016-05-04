@@ -39,12 +39,12 @@
 
 <%
 	String str = (String) request.getParameter("Page");
-	int id = Integer.parseInt(request.getParameter("id"));
+    String ss=(String)session.getAttribute("tId");
 	//s=chinese.toChinese(s);
 	int Page = 1;
 	List list = null;
 	if (str == null) {
-		list = thingDao.topArticle(id);
+		list = thingDao.topThing(ss);
 		//list=announceDao.topDiscuss( Integer.parseInt(request.getParameter("id")));
 		int pagesize = 10; //指定每页显示的记录数
 		list = pagination.getInitPage(list, Page, pagesize); //初始化分页信息
@@ -165,6 +165,7 @@ window.location.href="DiscussServlet?method=3&id="+id;
 								class="icon-chevron-right"></i></span></a>
 						<ul>
 							<li><a href="backstage_userSelect.jsp">用户列表</a></li>
+							<li><a href="backstage_UserBeijinSelect.jsp">用户被禁列表</a></li>
 							<li><a href="Backstage_updatePassword.jsp">修改密码</a></li>
 						</ul></li>
 				</ul>

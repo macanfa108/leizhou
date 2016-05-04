@@ -1,11 +1,13 @@
 <%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
 <jsp:directive.page import="com.wy.bean.UserBean"/>
+<jsp:directive.page import="com.wy.bean.AnnounceBean" />
+
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
   <meta charset="utf-8">
   <!-- Title and other stuffs -->
-  <title>雷州文化后台管理-修改密码</title>
+  <title>雷州文化后台管理-添加公告</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="keywords" content="">
@@ -23,7 +25,7 @@
 
   <!-- Bootstrap responsive -->
   <link href="style/bootstrap-responsive.css" rel="stylesheet">
-
+  
   
   <link rel="shortcut icon" href="img/favicon/favicon.png">
   
@@ -32,7 +34,15 @@
   
   
 </head>
-
+<jsp:useBean id="countTime" scope="page" class="com.wy.tool.CountTime"></jsp:useBean>
+	<jsp:useBean id="announce" scope="page" class="com.wy.dao.AnnounceDao"></jsp:useBean>
+<script type="text/javascript">
+	function shenheForm(id) {
+		if (confirm("确定要审核通过此话题？")) {
+			window.location.href = "AnnounceServlet?method=2&id=" + id;
+		}
+	}
+</script>
 <body>
 
 
@@ -53,8 +63,8 @@
 						<%
 						session.setAttribute("u","admin");
 						%>
-						<li><a href="index.jsp?u="+session.getAttribute("u") >首页</a>
-             </ul>
+						<li><a href="index.jsp?u="+session.getAttribute("u") >首页</a></li>
+					 </ul>
             
         </div>
       </div>
@@ -80,7 +90,7 @@
 
         <div class="sidebar-dropdown"><a href="#">Navigation</a></div>
 
-        <div class="s-content">
+       <div class="s-content">
 
           <ul id="nav">
             <!-- Main menu with font awesome icon -->
@@ -128,37 +138,38 @@
 
 
   </div>
-  <!-- Sidebar ends -->
+  <%
 
-  <!-- Mainbar starts -->
-  <div class="mainbar">
-            
-            <br/>  
-            <br/>  
-            <br/>  
-            <br/>  
-                <form align="center" align="right" class="form-search s-widget" name="form" method="post" action="UserServlet?method=5&sign=0" onSubmit="return userCheck()"">
-            <!--  <h1>修改密码</h1> -->
+  AnnounceBean articleForm=announce.queryAnnounce(Integer.valueOf(request.getParameter("id")));
+ // int id=Integer.valueOf(request.getParameter("id"));
+  
+%>
+ 
+  <div class="mainbar container">
+          
+                <form  align="center" class="form-search s-widget" name="form" method="post" action="" onSubmit="return userCheck()">
+              <h1>审核公告</h1>
               <div class="input-append">
-              
-                                          <label for="inputPassword">请输入用户名</label>&nbsp;&nbsp;&nbsp;
-               <input type="text"  id="inputPassword" placeholder="登录用户名" style="height:31px;width:200px" name="name">
+                                           公告标题&nbsp;&nbsp;
+               <input type="text"   id="inputPassword" value="<%=articleForm.getAnnounceTitle()%>" style="height:31px;width:500px" name="discussTitle">
                 
                <br/>                        
               <br/>  
               <br/>                            
-                                            <label for="inputPassword">请输入新密码</label>&nbsp;&nbsp;&nbsp;
-               <input type="password"  id="inputPassword" placeholder="新密码" style="height:31px;width:200px" name="newpassword">
+               公告内容&nbsp;&nbsp;                             
+               <textarea  id="inputPassword"  cols="80" rows="15" style="width:500px" name="discussContent" ><%=articleForm.getAnnounceContent()%></textarea>
               <br/>                        
               <br/>  
               <br/>                            
-                                           <label for="inputPassword"> 请确认新密码</label>&nbsp;&nbsp;&nbsp;
-               <input type="password"  id="inputPassword" placeholder="新密码" style="height:31px;width:200px" name="newpassword1">
+                                        发布时间&nbsp;&nbsp;
+               <input type="text"  id="inputPassword" placeholder="" style="height:31px;width:500px" name="discussTime"  value="<%=articleForm.getAnnounceTime() %>" size="30" readonly="readonly" onclick="alert('此文本框已设为只读，管理员不能修改')">
               
               <br/>  
               <br/>     
                 <br/>   
-                <button type="submit" class="btn btn-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;确定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+             <%--  <button type="submit" class="btn btn-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;审核&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+              --%> 
+              <td><div align="center" bgcolor="#009393"><a class="btn btn-info" href="javascript:shenheForm('<%=request.getParameter("id")%>')" title="审核通过" >审核</a></div></td>
               </div>
             </form>
             

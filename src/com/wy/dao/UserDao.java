@@ -43,9 +43,9 @@ public class UserDao {
 	}
 
  //删除用户信息
-	public boolean deleteConsumerForm(String status,String account) {
+	public boolean oprationUser(String status,String userName) {
 		boolean flag = false;
-		String sql = "update tb_user set status='"+status+"' where name='" + account + "'";
+		String sql = "update tb_user set status='"+status+"' where name='" + userName + "'";
 		if (connection.executeUpdate(sql)) {
 			flag = true;
 		}
@@ -131,19 +131,17 @@ public class UserDao {
 	
 
 	// 根据用户账号查询所有的数据
-	public List getConsumerList(String manageLevel,String sign) {
+	public List getConsumerList(String userStatus,String userName) {
 		
 		List list = new ArrayList();
 		String sql;
-		if(sign.equals("")){
-		if(manageLevel.equals("普通"))
-			sql = "select * from tb_user where status in ('普通','被禁')" ;
-		else
-		sql = "select * from tb_user where status='"
-				+ manageLevel + "'";
+		if(userName==null){
+		
+			sql = "select * from tb_user where status='"+userStatus+"'" ;
+		
 		}
 		else{
-			sql = "select * from tb_user where name like '%"+manageLevel+"%'";
+			sql = "select * from tb_user where status='"+userStatus+"' and name like '%"+userName+"%'";
 		}
 		try {
 			ResultSet rs = connection.executeQuery(sql);

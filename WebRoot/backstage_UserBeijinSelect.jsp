@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=gb2312" language="java"
 	import="java.sql.*" errorPage=""%>
-<jsp:directive.page import="com.wy.bean.AnnounceBean" />
+<jsp:directive.page import="com.wy.bean.UserBean" />
 <jsp:directive.page import="java.util.List" />
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <meta charset="utf-8">
 <!-- Title and other stuffs -->
-<title>雷州文化后台管理-话题审核列表</title>
+<title>雷州文化后台管理-用户被禁列表</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -25,24 +25,24 @@
 
 <!-- Bootstrap responsive -->
 <link href="style/bootstrap-responsive.css" rel="stylesheet">
-<!-- <link href="style/bootstrap.css" rel='stylesheet'> -->
+
 
 <link rel="shortcut icon" href="img/favicon/favicon.png">
 
 
 
-
 <jsp:useBean id="pagination" class="com.wy.tool.MyPagination"
 	scope="session"></jsp:useBean>
-<jsp:useBean id="announceDao" class="com.wy.dao.AnnounceDao"
-	scope="session"></jsp:useBean>
+<jsp:useBean id="consumerDao" class="com.wy.dao.UserDao" scope="session"></jsp:useBean>
+<jsp:useBean id="chinese" class="com.wy.tool.Chinese" scope="session"></jsp:useBean>
+
 <%
 	String str = (String) request.getParameter("Page");
-	String s = "";
+String s = (String) request.getParameter("userName");
 	int Page = 1;
 	List list = null;
 	if (str == null) {
-		list = announceDao.queryAnnounce(s, "未审核");
+		list = consumerDao.getConsumerList("被禁", s);
 		int pagesize = 10; //指定每页显示的记录数
 		list = pagination.getInitPage(list, Page, pagesize); //初始化分页信息
 	} else {
@@ -52,22 +52,12 @@
 %>
 
 <script type="text/javascript">
-	function shenheForm(id) {
-		if (confirm("确定要审核通过此话题？")) {
-			window.location.href = "AnnounceServlet?method=2&id=" + id;
+	function deleteForm(userName) {
+		if (confirm("确定要解禁此用户吗？")) {
+			window.location.href = "UserServlet?method=2&userName=" + userName;
 		}
 	}
 </script>
-
-<!-- 
-<script type="text/javascript">
-function topForm(id){
-if(confirm("确定要审核通过该话题吗？")){
-window.location.href="DiscussServlet?method=3&id="+id;
-}
-}
-</script>
- -->
 
 </head>
 
@@ -90,8 +80,7 @@ window.location.href="DiscussServlet?method=3&id="+id;
 						<%
 						session.setAttribute("u","admin");
 						%>
-						<li><a href="index.jsp?u="+session.getAttribute("u") >首页</a></li>
-					
+						<li><a href="index.jsp?u="+session.getAttribute("u") >首页</a>
 					</ul>
 
 				</div>
@@ -119,6 +108,7 @@ window.location.href="DiscussServlet?method=3&id="+id;
 			<div class="sidebar-dropdown">
 				<a href="#">Navigation</a>
 			</div>
+
 			<div class="s-content">
 
 				<ul id="nav">
@@ -170,6 +160,7 @@ window.location.href="DiscussServlet?method=3&id="+id;
 			</div>
 
 
+
 		</div>
 		<!-- Sidebar ends -->
 
@@ -187,14 +178,14 @@ if(pagination.getRecordSize()<=0){
 --%>
 				<div class="box-body">
 					<form align="right" class="form-search s-widget" name="form1"
-						method="post" action="backstage_DiscussNameSelect.jsp"
+						method="post" action="backstage_UserBeijinSelect.jsp"
 						onSubmit="return userCheck()">
-						<span style="width:100px;height:50px;bgcolor:yellow;float:left;"
-							font-size:16pt><h1>未审核列表</h1></span>
+						<span style="width:100px;height:50px;bgcolor:yellow;float:left;font-size:18px;"
+							><h1>用户被禁列表</h1></span>
 						<div class="input-append">
 
-							<input type="text" id="inputPassword" placeholder="请输入公告名"
-								style="height:31px;width:200px" name="discussName">
+							<input type="text" id="inputPassword" placeholder="请输入登录名"
+								style="height:31px;width:200px" name="userName">
 							<button type="submit" class="btn btn-danger">查询</button>
 						</div>
 					</form>
@@ -202,45 +193,34 @@ if(pagination.getRecordSize()<=0){
 					<!--  <table align="center" width="1054" border="1"  cellpadding="1" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#00FFFF"> -->
 					<table class="table table-hover table-responsive">
 						<tr>
-							<td width="200">公告标题</td>
-							<td width="225">内容</td>
-							<td width="200">发布时间</td>
-							<td width="100">状态</td>
-							<td>操作</td>
+							
+							<td width="205">登录名</td>
+							<td width="205">姓名</td>
+							<td width="205">电话号码</td>
+							<td width="205">状态</td>
+							<td width="205">操作</td>
 						</tr>
 						<%
 							for (int i = 0; i < list.size(); i++) {
-								AnnounceBean discussForm = (AnnounceBean) list.get(i);
-
-								String content = discussForm.getAnnounceContent();
-
-								if (content.length() > 9) {
-									content = content.substring(0, 9) + "...";
-
-								}
+								UserBean consumerForm = (UserBean) list.get(i);
 						%>
 						<tr>
-							<td><%=discussForm.getAnnounceTitle()%></td>
-							<td><%=content%></td>
-							<td title="如果想察看详细内容，单击相应的修改链接"><%=discussForm.getAnnounceTime()%></td>
-							<td style="color:#E96F5D;"><%=discussForm.getAnnounceStatus()%></p></td>
-							<%--   
-             <td><div align="center" bgcolor="#009393"><a href="javascript:deleteForm('<%=discussForm.getAnnounceId()%>')" title="可以查看相应的公告内容">置顶</a>&nbsp;&nbsp;<a href="javascript:deleteForm('<%=discussForm.getAnnounceId()%>')">删除</a></div></td>
-           --%>
-							<td><a class='btn btn-danger'
-								href="backstage_AnnounceShh.jsp?id=<%=discussForm.getAnnounceId()%>"
-								title="审核通过">审核</a></td>
+							
+							<td><%=consumerForm.getName()%></td>
+							<td><%=consumerForm.getRealName()%></td>
+							<td ><%=consumerForm.getTelNumber()%></td>
+							<td><%=consumerForm.getStatus()%></td>
+							<td><a class='btn btn-danger'  href="javascript:deleteForm('<%=consumerForm.getName()%>')">解禁</a></td>
 						</tr>
 						<%
 							}
 						%>
-
-
 					</table>
 					<!-- 显示分页导航栏 -->
 					<br />
 					<p align="center"><%=pagination.printCtrl(Page)%>
 					</p>
+					<br />
 
 
 
@@ -265,7 +245,7 @@ if(pagination.getRecordSize()<=0){
 	<!-- Foot starts -->
 
 
-	<div class="row-fluid">
+	<div class="row-fluid footer">
 		<div class="span12">
 			<hr class="visible-desktop">
 			<div class="copy"}>
@@ -279,9 +259,7 @@ if(pagination.getRecordSize()<=0){
 	</div>
 
 
-
 	<!-- Foot ends -->
-
 
 
 	<div class="clearfix"></div>

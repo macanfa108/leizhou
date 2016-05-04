@@ -1,8 +1,5 @@
 <%@ page contentType="text/html; charset=GB2312" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<jsp:directive.page import="com.wy.bean.DiscussBean" />
-<jsp:directive.page import="java.util.List" />
-<jsp:directive.page import="com.wy.bean.AnnounceBean"/>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -14,30 +11,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>欢迎来到雷州网</title>
+		<title>欢迎来到雷州旅行网-戏曲文化</title>
 		<link rel="stylesheet" href="<%=path %>/Vendor/bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="<%=path %>/css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="<%=path %>/css/index.css" />
-		<jsp:useBean id="pagination" class="com.wy.tool.MyPagination" scope="session"></jsp:useBean>
-		<jsp:useBean id="discussDao" class="com.wy.dao.DiscussDao" scope="session"></jsp:useBean>
-	    <jsp:useBean id="announceDao" class="com.wy.dao.AnnounceDao" scope="session"></jsp:useBean>
-	<%
-	String str = (String) request.getParameter("Page");
-    String discuss=(String)session.getAttribute("dId");
-    String announce=(String)session.getAttribute("aId");
-	int Page = 1;
-	List discussList = null;
-	List announceList = null;
-	if (str == null) {
-		discussList = discussDao.topDiscuss(discuss);
-		announceList=announceDao.topAnnounce(announce);
-		int pagesize = 10; //指定每页显示的记录数
-		discussList = pagination.getInitPage(discussList, Page, pagesize); //初始化分页信息
-	} else {
-		Page = pagination.getPage(str);
-		discussList = pagination.getAppointPage(Page); //获取指定页的数据
-	}
-%>
 	</head>
 
 	<body>
@@ -54,13 +31,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         			<span class="icon-bar"></span>
         			<span class="icon-bar"></span>
       				</button>
-					<a class="navbar-brand" href="<%=path %>/jsps/index.jsp">新闻概况</a>
+					<a class="navbar-brand" href="<%=path %>/jsps/index.jsp">爱旅行网</a>
 				</div>
 
 				<!-- 响应式导航部分 -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active">
+						<li>
 							<a href="<%=path %>/jsps/index.jsp">
 								<span class="glyphicon glyphicon-home"></span> 首页 <span class="sr-only">(current)</span>
 							</a>
@@ -75,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<li><a href="<%=path %>/jsps/language.jsp"><span class="glyphicon glyphicon-edit"></span>  语言文学</a></li>
 								<!-- <li class="divider"></li> -->
 								<li><a href="<%=path %>/jsps/calligraphy.jsp"><span class="glyphicon glyphicon-check"></span>  书法碑刻</a></li>
-								<li><a href="<%=path %>/jsps/ operaCulture.jsp"><span class="glyphicon glyphicon-adjust"></span>  戏曲文化</a></li>
+								<li  class="active"><a href="<%=path %>/jsps/ operaCulture.jsp"><span class="glyphicon glyphicon-adjust"></span>  戏曲文化</a></li>
 								<li><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon-map-marker"></span>  婚嫁习俗</a></li>
 								<li><a href="<%=path %>/jsps/architecturalStyle.jsp"><span class="glyphicon glyphicon-map-marker"></span>  建筑风格</a></li>
 							</ul>
@@ -85,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="glyphicon glyphicon-comment"></span> 文化论坛 <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=path %>/jsps/architecturalStyle.jsp"><span class="glyphicon glyphicon-list-alt"></span>  帖子列表</a></li>
+								<li><a href="<%=path %>/jsps/postList.jsp"><span class="glyphicon glyphicon-list-alt"></span>  帖子列表</a></li>
 								<li><a href="<%=path %>/jsps/postMessage.jsp"><span class="glyphicon glyphicon-send"></span>  发帖</a></li>
 							</ul>
 						</li>
@@ -108,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</a>
 						</li>
 					</ul>
-					<p class="text-center pull-right" align="right">欢迎您！<span class="text-danger"><%=session.getAttribute("u")%></span></p>
+					<!--<p class="text-center pull-left">欢迎您！<span class="text-danger">游客</span></p>-->
 
 				</div>
 				<!-- /.navbar-collapse -->
@@ -170,37 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-md-8 main-content">
 						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
 							<div class="post-head">
-								<h2 class="post-title"><a href="#">雷州简介</a></h2>
-							</div>
-							<%--
-							<div class="post-meta">
-							 
-								<span class="author">
-									建议游玩：<a href="#">2天</a>
-								</span>
-								  <time class="time" datetime="2016-4-18"></time>2016年4月18日
-							</div>
-							--%>
-							<div class="post-content">
-								<img src="<%=path %>/images/carouselImages/1.jpg" alt="雷州特色文化" class="img-thumbnail">
-								<div class="height_20"></div>
-								<p>湛江市位于中国大陆最南端，广东省西南部，省相望，西临北部湾，背靠大西南。湛江地区旧称“广州湾”。…</p>
-							</div>
-							<div class="post-permalink">
-								<a href="#" class="btn btn-default">查看详情</a>
-							</div>
-							<%-- 
-							<div class="footer">
-								<hr>
-								<div class="pull-left tag-list">
-									最佳季节：四季皆宜。
-								</div>
-							</div>
-							--%>
-						</article>
-						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
-							<div class="post-head">
-								<h1 class="post-title"><a href="#">雷州简介</a></h1>
+								<h2 class="post-title"><a href="#">戏曲文化</a></h2>
 							</div>
 							<div class="post-meta">
 								<span class="author">
@@ -209,9 +156,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日
 							</div>
 							<div class="post-content">
-								<img src="<%=path %>/images/carouselImages/bg.jpg" alt="雷州特色文化" class="img-thumbnail">
+								<img src="<%=path %>/images/carouselImages/1.jpg" alt="雷州特色文化" class="img-thumbnail">
 								<div class="height_20"></div>
-								<p>湛江市位于中国大陆最南端，广东省西南部，包括中国三大半岛之一的雷州半岛全部和半岛以北一部分。地处粤桂琼三省（区）交汇处，三面临海，东濒南海，南隔琼州海峡与海南省相望，西临北部湾，背靠大西南。湛江地区旧称“广州湾”。1899年，广州湾被法国“租借”，对外贸易曾繁盛一时。1943年，为日军占领。1945年抗战胜利，广州湾回归，从此定名为“湛江市”。因历史上曾属椹川县，境内东海岛曾设椹川巡检司，因而得名。 湛江市位于中国大陆的最南端，这里三面环海，蓝天，白云，碧海，帆影，绿树，红花……历来以环境优美而著称。邓小平同志说湛江是“北有青岛，南有湛江”。因而得名“南方的青岛”。周恩来总理称赞湛江“房子建在树林中，既幽静，有雅致”，像个“小巴黎”。陈毅元帅赞美湛江“冬犹暖，秋如夏，凉风动，炎氛化”，是“东方日内瓦”。冰心大师，诗人艾青在湛江分别留下《湛江十日》，《湛江夹竹桃》等散文佳作。</p>
+								<p>湛江市位于中国大陆最南端，广东省西南部，省相望，西临北部湾，背靠大西南。湛江地区旧称“广州湾”。…</p>
 							</div>
 							<div class="post-permalink">
 								<a href="#" class="btn btn-default">查看详情</a>
@@ -227,32 +174,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<!-- 左侧内容区 -->
 					<!-- 侧边栏部分 -->
-					
 					<aside class="col-md-4 sidebar">
 						<div class="widget">
-						
 							<h4 class="title">公告消息</h4>
 							<div class="content community">
 								<ul class='Message'>
-								<%
-							for (int i = 0; i <discussList.size(); i++) {
-								DiscussBean discussForm = (DiscussBean) discussList.get(i);
-						%>
-								<li><a href='#' ><%=discussForm.getDiscussTitle()%></a></li>
-									 <%--<li><a href='#' >雷州一批作品获奖</a></li>
+									<li><a href='#' >雷州一批作品获奖</a></li>
 									<li><a href='#' >医院也“坑人”?雷州卫计部门将调查淋球菌事件</a></li>
 									<li><a href='#' >雷州潮溪村恢复村落古朴原貌</a></li>
 									<li><a href='#' >组图:安徽夫妇在雷州市化缘乞讨被当人贩子遭暴打</a></li>
 									<li><a href='#' >湛江朝发村河段水体黑臭引关注 雷州青年运河东海河整治工程加快推进</a> </li>
-								--%>
-								<%
-							  }
-						     %>
-								  <a href="#" align="center">查看更多>>></a>   
 								</ul>
-								
-
-								
 								<!-- <p>QQ群：277327792</p>
 								
 								<p><a href="#"> 官方微博</a></p> -->
@@ -284,12 +216,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>
 					</aside>
-					
-					
-					
-					
-					
-					
 					<!-- 侧边栏部分 -->
 				</div>
 			</div>
@@ -303,25 +229,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<h4 class="title">最新信息</h4>
 								<div class="content recent-post">
 									<div class="recent-single-post">
-									<%
-							for (int i = 0; i <2; i++) {
-								AnnounceBean announceForm = (AnnounceBean) announceList.get(i);
-						%>
-										<a href="#" class="post-title"><%=announceForm.getAnnounceTitle()%></a>
-										<div class="date"><%=announceForm.getAnnounceTime()%></div>
+										<a href="#" class="post-title">很好一个大学，天人离市区，只能学习</a>
+										<div class="date">May 18, 2015</div>
 									</div>
-									<%
-							}
-						%>
-						<a href="#" align="center">查看更多>>></a>   
-						<%-- 
 									<div class="recent-single-post">
 										<a href="#" class="post-title">美丽的湖光岩，是湛江最有名的风景点。景区湖光山色，风光秀丽</a>
 										<div class="date">May 18, 2015</div>
 									</div>
 									
 								</div>
-								--%>
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -357,7 +273,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 					<div class="col-md-12">
-						<p class='banquan'>广东海洋大学信息学院信管1121</p>
+						<p class='banquan'>京ICP备11008151号京公网安备11010802014853</p>
 					</div>
 				</div>
 			</footer>
@@ -375,21 +291,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="modal-body">
 
 						<!--登录表单-->
-						<form id='loginForm' class="form-horizontal" name="form1" method="post"
-							action="UserServlet?method=0&sign=0"
-							onSubmit="return userCheck()">
+						<form id='loginForm' class="form-horizontal">
 							<div class="form-group row">
 
 								<label for="InputName" class="col-sm-2 control-label">账号：</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control" id="InputName" name="account" placeholder="请输入账号">
+									<input type="text" class="form-control" id="InputName" name="InputName" placeholder="请输入账号">
 								</div>
 
 							</div>
 							<div class="form-group row">
 								<label for="InputPassword" class="col-sm-2 control-label">密码：</label>
 								<div class="col-sm-8">
-									<input type="password" class="form-control" id="InputPassword" name="password" placeholder="密码">
+									<input type="password" class="form-control" id="InputPassword" name="InputPassword" placeholder="密码">
 								</div>
 							</div>
 							<div class="form-group row">
@@ -397,17 +311,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<label><input type="checkbox" name="rememberPassword">记住密码？</label>
 								</div>
 							</div>
-						
+						</form>
 
 					</div>
 					<!--主体-->
 					<!--底部-->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
-						<button type="submit" class="btn btn-success">登录</button>
+						<button type="button" class="btn btn-success">登录</button>
 					</div>
 				</div>
-				</form>
 			</div>
 		</div>
 		<!--登录弹出框-->
@@ -423,12 +336,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<!--主体-->
 					<div class="modal-body">
 						<!--注册表单-->
-						<form id='registerForm' class="form-horizontal" name="form" method="post" action="UserServlet?method=1&sign=1" onSubmit="return accountADD()">
+						<form id='registerForm' class="form-horizontal" action="#">
 							<div class="form-group row">
 
 								<label for="InputName" class="col-sm-3 control-label">账号：</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control" id="registerName" name='account' placeholder="请输入账号" required="required">
+									<input type="text" class="form-control" id="registerName" name='registerName' placeholder="请输入账号" required="required">
 								</div>
 
 							</div>
@@ -437,7 +350,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 								<label for="RealName" class="col-sm-3 control-label">真实姓名：</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control" id="RealName" name='realName' placeholder="真实名" required="required">
+									<input type="text" class="form-control" id="RealName" name='RealName' placeholder="真实名" required="required">
 								</div>
 
 							</div>
@@ -445,25 +358,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="form-group row">
 								<label for="InputPassword" class="col-sm-3 control-label">密码：</label>
 								<div class="col-sm-8">
-									<input type="password" class="form-control" id="registerPassword" name='password' placeholder="密码" required="required">
+									<input type="password" class="form-control" id="registerPassword" name='registerPassword' placeholder="密码" required="required">
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="InputPassword" class="col-sm-3 control-label">确认密码：</label>
 								<div class="col-sm-8">
-									<input type="password" class="form-control" id="registerPassword2" name='repeatPassword' placeholder="确认密码" required="required">
+									<input type="password" class="form-control" id="registerPassword2" name='registerPassword2' placeholder="确认密码" required="required">
 								</div>
 							</div>
 							<div class="form-group row">
 
 								<label for="InputName" class="col-sm-3 control-label">手机：</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control" id="registerPhone" name='telNumber' placeholder="请输入手机号码" required="required">
+									<input type="text" class="form-control" id="registerPhone" name='registerPhone' placeholder="请输入手机号码" required="required">
 								</div>
 
 							</div>
 
-						
+						</form>
 
 					</div>
 					<!--主体-->
@@ -474,7 +387,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<button type="submit" class="btn btn-success">注册</button>
 					</div>
 				</div>
-				</form>
 			</div>
 		</div>
 		<!--注册弹出框-->

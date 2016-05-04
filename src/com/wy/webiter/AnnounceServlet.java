@@ -52,7 +52,7 @@ public class AnnounceServlet extends HttpServlet {
 		AnnounceBean disussForm = new AnnounceBean();
 		announceDao = new AnnounceDao();
 		int id=Integer.valueOf(request.getParameter("id"));
-		if (announceDao.upDiscuss(id)) {
+		if (announceDao.upAnnounce(id)) {
 			out
 					.print("<script language=javascript>alert('审核话题成功！');window.location.href='backstage_AnnounceSelectWeishh.jsp';</script>");
 		} else {
@@ -73,7 +73,7 @@ public class AnnounceServlet extends HttpServlet {
 		AnnounceBean announceForm = new AnnounceBean();
 		announceDao = new AnnounceDao();
 		announceForm.setAnnounceId(Integer.valueOf(request.getParameter("id")));
-		if (announceDao.operationDiscuss("删除", announceForm)) {
+		if (announceDao.operationAnnounce("删除", announceForm)) {
 			out
 					.print("<script language=javascript>alert('删除话题成功！');window.location.href='backstage_AnounceSelect.jsp';</script>");
 		} else {
@@ -88,16 +88,11 @@ public class AnnounceServlet extends HttpServlet {
 				HttpServletResponse response) throws ServletException, IOException {
 			response.setContentType("text/html;charset=GBK");
 			PrintWriter out = response.getWriter();
-			AnnounceBean disussForm = new AnnounceBean();
-			announceDao = new AnnounceDao();
-			disussForm.setAnnounceId(Integer.valueOf(request.getParameter("id")));
-			if (announceDao.operationDiscuss("置顶", disussForm)) {
-				out
-						.print("<script language=javascript>alert('置顶话题成功！');window.location.href='backstage_AnnounceTopSelect.jsp';</script>");
-			} else {
-				out
-						.print("<script language=javascript>alert('置顶话题失败！');history.go(-1);</script>");
-			}
+			
+				out.print("<script language=javascript>alert('置顶话题成功！');window.location.href='backstage_AnnounceTopSelect.jsp';</script>");
+			
+				//out.print("<script language=javascript>alert('置顶话题失败！');history.go(-1);</script>");
+			
 
 		}
 
@@ -113,7 +108,7 @@ public class AnnounceServlet extends HttpServlet {
 		disussForm.setAnnounceTime(Chinese.toChinese(request
 				.getParameter("announceTime")));
 		String result = "添加公告失败！";
-		if (announceDao.operationDiscuss("添加", disussForm)) {
+		if (announceDao.operationAnnounce("添加", disussForm)) {
 			result = "添加公告成功！";
 		}
 		request.setAttribute("result", result);

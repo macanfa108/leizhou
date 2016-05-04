@@ -36,10 +36,11 @@
 	scope="session"></jsp:useBean>
 <jsp:useBean id="discussDao" class="com.wy.dao.DiscussDao"
 	scope="session"></jsp:useBean>
+	<jsp:useBean id="chinese" class="com.wy.tool.Chinese"
+	scope="session"></jsp:useBean>
 <%
 	String str = (String) request.getParameter("Page");
-	//String s=(String)request.getParameter("discussName");
-	String s = "";
+    String s=chinese.toChinese((String)request.getParameter("discussName"));
 	int Page = 1;
 	List list = null;
 	if (str == null) {
@@ -60,20 +61,25 @@
 	}
 </script>
 
-<!-- 
+ 
 <script type="text/javascript">
 function topForm(id){
 if(confirm("确定要置顶此公告信息吗？")){
-window.location.href="DiscussServlet?method=3&id="+id;
+	window.location.href="DiscussServlet?method=3&id="+id;
+	window.location.href = "backstage_DiscussSelect.jsp?id=" + id;
 }
 }
 </script>
- -->
+
 
 </head>
 
 <body>
-
+<% session.setAttribute("dId",(String) request.getParameter("id")); 
+           String a=(String)session.getAttribute("dId");
+          //Integer a=(Integer)session.getAttribute("aId");
+          // System.out.println(a);
+ %>
 
 	<!--红色区域部分-->
 	<!-- Navbar starts -->
@@ -88,12 +94,11 @@ window.location.href="DiscussServlet?method=3&id="+id;
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
 						<li><a href="backstage_login.jsp">您好！&nbsp;&nbsp;admin</a></li>
-						<li><a href="backstage_login.jsp">注销</a></li>
-					</ul>
-					</li>
-
-
-					</ul>
+						<%
+						session.setAttribute("u","admin");
+						%>
+						<li><a href="index.jsp?u="+session.getAttribute("u") >首页</a></ul>
+					
 				</div>
 			</div>
 		</div>
@@ -163,6 +168,7 @@ window.location.href="DiscussServlet?method=3&id="+id;
 								class="icon-chevron-right"></i></span></a>
 						<ul>
 							<li><a href="backstage_userSelect.jsp">用户列表</a></li>
+							<li><a href="backstage_UserBeijinSelect.jsp">用户被禁列表</a></li>
 							<li><a href="Backstage_updatePassword.jsp">修改密码</a></li>
 						</ul></li>
 				</ul>
@@ -188,7 +194,7 @@ if(pagination.getRecordSize()<=0){
 --%>
 				<div class="box-body">
 					<form align="right" class="form-search s-widget" name="form1"
-						method="post" action="backstage_DiscussNameSelect.jsp"
+						method="post" action="backstage_DiscussSelect.jsp"
 						onSubmit="return userCheck()">
 						<span style="width:100px;height:50px;bgcolor:yellow;float:left;"
 							font-size:16pt><h1>公告列表</h1></span>
@@ -227,7 +233,7 @@ if(pagination.getRecordSize()<=0){
              <td><div align="center" bgcolor="#009393"><a href="javascript:deleteForm('<%=discussForm.getDiscussId()%>')" title="可以查看相应的公告内容">置顶</a>&nbsp;&nbsp;<a href="javascript:deleteForm('<%=discussForm.getDiscussId()%>')">删除</a></div></td>
            -->
 							<td><a class="btn btn-info"
-								href="Front1_gonggaozhidengxs.jsp?id=<%=discussForm.getDiscussId()%>"
+								href="javascript:topForm('<%=discussForm.getDiscussId()%>')"
 								title="可以查看相应的公告内容">置顶</a>&nbsp;&nbsp;<a
 								class="btn btn-danger"
 								href="javascript:deleteForm('<%=discussForm.getDiscussId()%>')">删除</a></td>

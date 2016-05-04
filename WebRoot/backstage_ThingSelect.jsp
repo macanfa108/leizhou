@@ -44,7 +44,7 @@
 	int Page = 1;
 	List list = null;
 	if (str == null) {
-		list = thingDao.queryArticle(s);
+		list = thingDao.queryThing(s);
 		//list=announceDao.topDiscuss( Integer.parseInt(request.getParameter("id")));
 		int pagesize = 10; //指定每页显示的记录数
 		list = pagination.getInitPage(list, Page, pagesize); //初始化分页信息
@@ -62,20 +62,25 @@
 	}
 </script>
 
-<!-- 
+ 
 <script type="text/javascript">
 function topForm(id){
 if(confirm("确定要置顶此公告信息吗？")){
-window.location.href="DiscussServlet?method=3&id="+id;
+	window.location.href="ThingServlet?method=8&id="+id;
+	window.location.href = "backstage_ThingSelect.jsp?id=" + id;
 }
 }
 </script>
- -->
+
 
 </head>
 
 <body>
-
+<% session.setAttribute("tId",(String) request.getParameter("id")); 
+           String a=(String)session.getAttribute("tId");
+          //Integer a=(Integer)session.getAttribute("aId");
+          // System.out.println(a);
+ %>
 
 	<!--红色区域部分-->
 	<!-- Navbar starts -->
@@ -90,7 +95,10 @@ window.location.href="DiscussServlet?method=3&id="+id;
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
 						<li><a href="backstage_login.jsp">您好！&nbsp;&nbsp;admin</a></li>
-						<li><a href="backstage_login.jsp">注销</a></li>
+						<%
+						session.setAttribute("u","admin");
+						%>
+						<li><a href="index.jsp?u="+session.getAttribute("u") >首页</a>
 					</ul>
 					</li>
 
@@ -165,6 +173,7 @@ window.location.href="DiscussServlet?method=3&id="+id;
 								class="icon-chevron-right"></i></span></a>
 						<ul>
 							<li><a href="backstage_userSelect.jsp">用户列表</a></li>
+							<li><a href="backstage_UserBeijinSelect.jsp">用户被禁列表</a></li>
 							<li><a href="Backstage_updatePassword.jsp">修改密码</a></li>
 						</ul></li>
 				</ul>
@@ -234,8 +243,8 @@ if(pagination.getRecordSize()<=0){
            -->
 							<td><a
 							class='btn btn-info'
-								href="front_TopThingSelect.jsp?id=<%=thingForm.getThingId()%>"
-								title="可以查看相应的公告内容">置顶</a>&nbsp;&nbsp;<a
+								href="javascript:topForm('<%=thingForm.getThingId()%>')"
+								title="可以查看相应的精品内容">置顶</a>&nbsp;&nbsp;<a
 								class='btn btn-danger'
 								href="javascript:deleteForm('<%=thingForm.getThingId()%>')">删除</a></td>
 						</tr>

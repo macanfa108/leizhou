@@ -40,13 +40,13 @@
 
 <%
 	String str = (String) request.getParameter("Page");
-	int id = Integer.parseInt(request.getParameter("id"));
+    String ss=(String)session.getAttribute("nId");
 	//s=chinese.toChinese(s);
 	//String s=null;
 	int Page = 1;
 	List list = null;
 	if (str == null) {
-		list = newsDao.topNews(id);
+		list = newsDao.topNews(ss);
 		int pagesize = 10; //指定每页显示的记录数
 		list = pagination.getInitPage(list, Page, pagesize); //初始化分页信息
 	} else {
@@ -163,6 +163,7 @@ window.location.href="DiscussServlet?method=3&id="+id;
 								class="icon-chevron-right"></i></span></a>
 						<ul>
 							<li><a href="backstage_userSelect.jsp">用户列表</a></li>
+							<li><a href="backstage_UserBeijinSelect.jsp">用户被禁列表</a></li>
 							<li><a href="Backstage_updatePassword.jsp">修改密码</a></li>
 						</ul></li>
 

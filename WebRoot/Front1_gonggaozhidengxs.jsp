@@ -38,11 +38,11 @@
 	scope="session"></jsp:useBean>
 <%
 	String str = (String) request.getParameter("Page");
+    String ss=(String)session.getAttribute("dId");
 	int Page = 1;
 	List list = null;
 	if (str == null) {
-		list = discussDao.topDiscuss(Integer.parseInt(request
-				.getParameter("id")));
+		list = discussDao.topDiscuss(ss);
 		int pagesize = 10; //指定每页显示的记录数
 		list = pagination.getInitPage(list, Page, pagesize); //初始化分页信息
 	} else {
@@ -162,6 +162,7 @@ window.location.href="DiscussServlet?method=3&id="+id;
 								class="icon-chevron-right"></i></span></a>
 						<ul>
 							<li><a href="backstage_userSelect.jsp">用户列表</a></li>
+							<li><a href="backstage_UserBeijinSelect.jsp">用户被禁列表</a></li>
 							<li><a href="Backstage_updatePassword.jsp">修改密码</a></li>
 						</ul></li>
 				</ul>

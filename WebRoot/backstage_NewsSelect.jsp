@@ -63,20 +63,25 @@
 	}
 </script>
 
-<!-- 
+
 <script type="text/javascript">
 function topForm(id){
 if(confirm("确定要置顶此公告信息吗？")){
-window.location.href="DiscussServlet?method=3&id="+id;
+	window.location.href="DiscussServlet?method=8&id="+id;
+	window.location.href = "backstage_NewsSelect.jsp?id=" + id;
 }
 }
 </script>
- -->
+
 
 </head>
 
 <body>
-
+<% session.setAttribute("nId",(String) request.getParameter("id")); 
+           String a=(String)session.getAttribute("nId");
+          //Integer a=(Integer)session.getAttribute("aId");
+          // System.out.println(a);
+ %>
 
 	<!--红色区域部分-->
 	<!-- Navbar starts -->
@@ -91,7 +96,10 @@ window.location.href="DiscussServlet?method=3&id="+id;
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
 						<li><a href="backstage_login.jsp">您好！&nbsp;&nbsp;admin</a></li>
-						<li><a href="backstage_login.jsp">注销</a></li>
+						<%
+						session.setAttribute("u","admin");
+						%>
+						<li><a href="index.jsp?u="+session.getAttribute("u") >首页</a>
 					</ul>
 
 				</div>
@@ -163,6 +171,7 @@ window.location.href="DiscussServlet?method=3&id="+id;
 								class="icon-chevron-right"></i></span></a>
 						<ul>
 							<li><a href="backstage_userSelect.jsp">用户列表</a></li>
+							<li><a href="backstage_UserBeijinSelect.jsp">用户被禁列表</a></li>
 							<li><a href="Backstage_updatePassword.jsp">修改密码</a></li>
 						</ul></li>
 
@@ -238,7 +247,7 @@ if(pagination.getRecordSize()<=0){
            -->
 							<td><a
 							class='btn btn-info'
-								href="Front1_TopNewsSelect.jsp?id=<%=discussForm.getNewsId()%>"
+								href="javascript:topForm('<%=discussForm.getNewsId()%>')"
 								title="可以查看相应的公告内容">置顶</a>&nbsp;&nbsp;<a
 								class="btn btn-danger"
 								href="javascript:deleteForm('<%=discussForm.getNewsId()%>')">删除</a></td>
