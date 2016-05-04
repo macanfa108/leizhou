@@ -175,3 +175,82 @@ p.banquan{
 	margin:10px auto;
 	
 }
+.filter-btn-group {
+	width:100%;
+	background:#F1F1F1;
+	padding:8px 8px;
+	border-top:1px solid #DDDDDD;
+	border-bottom:1px solid #DDDDDD;
+}
+.filter .btn-default{
+	color:#000;
+	background:#fff;
+	border:1px solid #ccc;
+}
+.filter .filterBack{
+	background:#E4393C;
+	color:#fff;
+}
+/* 搜索框 */
+.searchBtnGroup{
+	/* background:red; */
+	margin-left:20px;
+}
+.searchInput{
+	height:30px;line-height:30px;
+	border:1px solid #ccc;
+	float:left;
+	padding-left:5px;
+}
+.searchBtn{
+	display:inline-block;
+	width:60px;
+	height:30px;line-height:30px;
+	text-align:center;
+	border:1px solid #CCCCCC;
+	background:#F5F5F5;
+	float:left;
+	color:#000;
+	margin-left:-1px;
+}
+.searchBtn:hover{
+	text-decoration:none;
+}
+
+/* 精品列表部分 */
+.primeList{
+	position:relative;
+}
+.primeList:hover .like{
+	display:block;
+}
+.primeListImg{
+	position:relative;
+	width:100%;
+}
+.like{
+	padding:2px 5px;
+	/* width:60px;height:25px;line-height:25px; */
+	background:#4C4C4C;
+	color:#fff;
+	position:absolute;
+	top:5%;
+	right:5%;
+	transition:all 0.4s linear;
+	display:none;
+}
+.like:hover{
+	color:#E4393C;
+	text-decoration:none;
+	
+}
+.ellipsis{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	margin-bottom:10px;
+}
+.redColor{
+	color:red;
+	font-weight:bold;
+}

@@ -19,16 +19,16 @@ public class AnnounceDao {
 	public boolean operationAnnounce(String operation, AnnounceBean disussForm) {
 		boolean flag = false;
 		String sql = null;
-		if (operation.equals("É¾³ý"))
+		if (operation.equals("É¾ï¿½ï¿½"))
 			sql = "delete from tb_announce where announceId='" + disussForm.getAnnounceId()
 					+ "'";
-		if (operation.equals("Ìí¼Ó"))
+		if (operation.equals("ï¿½ï¿½ï¿½"))
 			sql = "insert into tb_announce values ('"
 					+ disussForm.getAnnounceTitle() + "','"
 					+ disussForm.getAnnounceContent() + "','"
 					+ disussForm.getAnnounceTime() + "')";
-		if (operation.equals("ÐÞ¸Ä"))
-			sql = "update tb_announce set announceStatus='ÒÑÉóºË' where announceId=";
+		if (operation.equals("ï¿½Þ¸ï¿½"))
+			sql = "update tb_announce set announceStatus='å·²å®¡æ ¸' where announceId=";
 		
 		
 		if (connection.executeUpdate(sql))
@@ -36,17 +36,17 @@ public class AnnounceDao {
 		return flag;
 	}
 	
-	//ÉóºË»°Ìâ
+	//ï¿½ï¿½Ë»ï¿½ï¿½ï¿½
 	public boolean upAnnounce(Integer id) {
 		boolean flag = false;
-		String sql = "update tb_announce set announceStatus='ÒÑÉóºË' where announceId="+id;
+		String sql = "update tb_announce set announceStatus='ï¿½å·²å®¡æ ¸' where announceId="+id;
 		
 		if (connection.executeUpdate(sql))
 			flag = true;
 		return flag;
 	}
     
-    //È«²¿²éÑ¯ÓëÄ£ºý²éÑ¯
+    //È«ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ñ¯
 	public List queryAnnounce(String announceName,String announceStatus) {
 		List list = new ArrayList();
 		AnnounceBean form = null;
@@ -78,14 +78,14 @@ public class AnnounceDao {
 	}
 	
 	
-	//ÖÃ¶¥²éÑ¯
+	//ï¿½Ã¶ï¿½ï¿½ï¿½Ñ¯
 	public List topAnnounce(String announceId) {
 		List list = new ArrayList();
 		AnnounceBean form = null;
 		//System.out.println(announceId);
 		String sql;
 		if(announceId==null){
-			sql="select top 5 * from tb_announce where announceStatus='ÒÑÉóºË' order by announceId desc";
+			sql="select top 5 * from tb_announce where announceStatus='å·²å®¡æ ¸' order by announceId desc";
 			try {
 				ResultSet rs = connection.executeQuery(sql);
 				while (rs.next()) {
@@ -121,7 +121,7 @@ public class AnnounceDao {
 				e.printStackTrace();
 			}
 			
-			String sql1 = "select top 4 * from tb_announce where announceId <>"+id+" and announceStatus='ÒÑÉóºË' order by announceId desc";
+			String sql1 = "select top 4 * from tb_announce where announceId <>"+id+" and announceStatus='å·²å®¡æ ¸' order by announceId desc";
 		
 		try {
 			ResultSet rs = connection.executeQuery(sql1);

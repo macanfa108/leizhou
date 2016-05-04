@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<!-- <li class="divider"></li> -->
 								<li><a href="<%=path %>/jsps/calligraphy.jsp"><span class="glyphicon glyphicon-check"></span>  书法碑刻</a></li>
 								<li><a href="<%=path %>/jsps/ operaCulture.jsp"><span class="glyphicon glyphicon-adjust"></span>  戏曲文化</a></li>
-								<li><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon-map-marker"></span>  婚嫁习俗</a></li>
+								<li><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon glyphicon-gift"></span>  婚嫁习俗</a></li>
 								<li><a href="<%=path %>/jsps/architecturalStyle.jsp"><span class="glyphicon glyphicon-map-marker"></span>  建筑风格</a></li>
 							</ul>
 						</li>
@@ -238,7 +238,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							for (int i = 0; i <discussList.size(); i++) {
 								DiscussBean discussForm = (DiscussBean) discussList.get(i);
 						%>
-								<li><a href='#' ><%=discussForm.getDiscussTitle()%></a></li>
+								<li><a href='#'  onClick="window.open('jsps/discussSelectOne.jsp?id=<%=discussForm.getDiscussId()%>','','width=600,height=500,left=300,top=150,scrollbars =yes');"><%=discussForm.getDiscussTitle()%></a></li>
 									 <%--<li><a href='#' >雷州一批作品获奖</a></li>
 									<li><a href='#' >医院也“坑人”?雷州卫计部门将调查淋球菌事件</a></li>
 									<li><a href='#' >雷州潮溪村恢复村落古朴原貌</a></li>

@@ -18,6 +18,8 @@
 	href="<%=path%>/Vendor/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="<%=path%>/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="<%=path%>/css/index.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=path%>/css/CultureForum.css" />
 </head>
 
 <body>
@@ -60,7 +62,7 @@
 							<li><a href="<%=path%>/jsps/ operaCulture.jsp"><span
 									class="glyphicon glyphicon-adjust"></span> 戏曲文化</a></li>
 							<li><a href="<%=path%>/jsps/marriage.jsp"><span
-									class="glyphicon glyphicon-map-marker"></span> 婚嫁习俗</a></li>
+									class="glyphicon glyphicon glyphicon-gift"></span> 婚嫁习俗</a></li>
 							<li><a href="<%=path%>/jsps/architecturalStyle.jsp"><span
 									class="glyphicon glyphicon-map-marker"></span> 建筑风格</a></li>
 						</ul></li>
@@ -76,8 +78,8 @@
 							<li><a href="<%=path%>/jsps/postMessage.jsp"><span
 									class="glyphicon glyphicon-send"></span> 发帖</a></li>
 						</ul></li>
-					<li  class="active"><a href="<%=path%>/jsps/CultureForum.jsp"> <span
-							class="glyphicon glyphicon-leaf"></span> 精品长廊
+					<li class="active"><a href="<%=path%>/jsps/CultureForum.jsp">
+							<span class="glyphicon glyphicon-leaf"></span> 精品长廊
 					</a></li>
 					<li><a href="javascript:;" data-toggle='modal'
 						data-target='#login'> <span class="glyphicon glyphicon-user"></span>
@@ -142,153 +144,162 @@
 	</div>
 	<!--轮播图部分-->
 	<div class="height_20"></div>
+	<section class="content-wrap">
+		<div class='container'>
+			<div class="row">
+				<div class='col-md-12 filter'>
+					<div class="btn-group btn-group-sm filter-btn-group" role="group">
+						<span type="button" class="btn btn-default  filterBack">分类展示</span>
+						<a href='#' type="button" class="btn btn-default ">鱼</a> <a
+							href='#' type="button" class="btn btn-default">贝壳</a> <a href='#'
+							type="button" class="btn btn-default">虾</a>
+						<!--搜索框 -->
+						<div class='searchBtnGroup pull-left'>
+							<input type="text" placeholder="搜索精品" class='searchInput'>
+							<a href='' class='searchBtn'>搜索</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<div class="height_20"></div>
 	<!-- 主体内容 -->
 	<section class="content-wrap">
 		<div class="container">
-			<div class="row">
-				<!-- 左侧内容区 -->
-				<div class="col-md-8 main-content">
-					<article class="post">
-						<h4 class="title">精品长廊</h4>
-						<div class="content">
-							<ul>
-								
-								<li class="item"><a href="#"> <span
-										class="glyphicon glyphicon-tag"></span>
-										湛江朝发村河段水体黑臭引关注 雷州青年运河东海河整治工程加快推进
-								</a></li>
-								<li class="item"><a href="#"> <span
-										class="glyphicon glyphicon-tag"></span>
-										湛江朝发村河段水体黑臭引关注 雷州青年运河东海河整治工程加快推进
-								</a></li>
-								<li class="item"><a href="#"> <span
-										class="glyphicon glyphicon-tag"></span>
-										湛江朝发村河段水体黑臭引关注 雷州青年运河东海河整治工程加快推进
-								</a></li>
-								<li class="item"><a href="#"> <span
-										class="glyphicon glyphicon-tag"></span>
-										湛江朝发村河段水体黑臭引关注 雷州青年运河东海河整治工程加快推进
-								</a></li>
-								<li class="item"><a href="#"> <span
-										class="glyphicon glyphicon-tag"></span>
-									湛江朝发村河段水体黑臭引关注 雷州青年运河东海河整治工程加快推进
-								</a></li>
-							</ul>
-						</div>
-					</article>
-					<!--<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
-							<div class="post-head">
-								<h2 class="post-title"><a href="#">é·å·ç¹è²æå</a></h2>
-							</div>
-							<div class="post-meta">
-								<span class="author">
-									å»ºè®®æ¸¸ç©ï¼<a href="#">2å¤©</a>
-								</span> â¢ <time class="time" datetime="2015-5-18"></time>2015å¹´5æ18æ¥
-							</div>
-							<div class="post-content">
-								<img src="img/carouselImages/1.jpg" alt="é·å·ç¹è²æå" class="img-thumbnail">
-								<div class="height_20"></div>
-								<p>æ¹æ±å¸ä½äºä¸­å½å¤§éæåç«¯ï¼å¹¿ä¸çè¥¿åé¨ï¼çç¸æï¼è¥¿ä¸´åé¨æ¹¾ï¼èé å¤§è¥¿åãæ¹æ±å°åºæ§ç§°âå¹¿å·æ¹¾âãâ¦</p>
-							</div>
-							<div class="post-permalink">
-								<a href="#" class="btn btn-default">æ¥çè¯¦æ</a>
-							</div>
-							<div class="footer">
-								<hr>
-								<div class="pull-left tag-list">
-									æä½³å­£èï¼åå­£çå®ã
-								</div>
-							</div>
-						</article>-->
-					<!--<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
-							<div class="post-head">
-								<h1 class="post-title"><a href="#">é·å·ç¹è²æå</a></h1>
-							</div>
-							<div class="post-meta">
-								<span class="author">
-									å»ºè®®æ¸¸ç©ï¼<a href="#">2å¤©</a>
-								</span> â¢ <time class="time" datetime="2015-5-18"></time>2015å¹´5æ18æ¥
-							</div>
-							<div class="post-content">
-								<img src="img/carouselImages/bg.jpg" alt="é·å·ç¹è²æå" class="img-thumbnail">
-								<div class="height_20"></div>
-								<p>æ¹æ±å¸ä½äºä¸­å½å¤§éæåç«¯ï¼å¹¿ä¸çè¥¿åé¨ï¼åæ¬ä¸­å½ä¸å¤§åå²ä¹ä¸çé·å·åå²å¨é¨ååå²ä»¥åä¸é¨åãå°å¤ç²¤æ¡ç¼ä¸çï¼åºï¼äº¤æ±å¤ï¼ä¸é¢ä¸´æµ·ï¼ä¸æ¿åæµ·ï¼åéç¼å·æµ·å³¡ä¸æµ·åçç¸æï¼è¥¿ä¸´åé¨æ¹¾ï¼èé å¤§è¥¿åãæ¹æ±å°åºæ§ç§°âå¹¿å·æ¹¾âã1899å¹´ï¼å¹¿å·æ¹¾è¢«æ³å½âç§åâï¼å¯¹å¤è´¸ææ¾ç¹çä¸æ¶ã1943å¹´ï¼ä¸ºæ¥åå é¢ã1945å¹´ææèå©ï¼å¹¿å·æ¹¾åå½ï¼ä»æ­¤å®åä¸ºâæ¹æ±å¸âãå åå²ä¸æ¾å±æ¤¹å·å¿ï¼å¢åä¸æµ·å²æ¾è®¾æ¤¹å·å·¡æ£å¸ï¼å èå¾åã æ¹æ±å¸ä½äºä¸­å½å¤§éçæåç«¯ï¼è¿éä¸é¢ç¯æµ·ï¼èå¤©ï¼ç½äºï¼ç¢§æµ·ï¼å¸å½±ï¼ç»¿æ ï¼çº¢è±â¦â¦åæ¥ä»¥ç¯å¢ä¼ç¾èèç§°ãéå°å¹³åå¿è¯´æ¹æ±æ¯âåæéå²ï¼åææ¹æ±âãå èå¾åâåæ¹çéå²âãå¨æ©æ¥æ»çç§°èµæ¹æ±âæ¿å­å»ºå¨æ æä¸­ï¼æ¢å¹½éï¼æéè´âï¼åä¸ªâå°å·´é»âãéæ¯åå¸èµç¾æ¹æ±âå¬ç¹æï¼ç§å¦å¤ï¼åé£å¨ï¼çæ°åâï¼æ¯âä¸æ¹æ¥åç¦âãå°å¿å¤§å¸ï¼è¯äººè¾éå¨æ¹æ±åå«çä¸ãæ¹æ±åæ¥ãï¼ãæ¹æ±å¤¹ç«¹æ¡ãç­æ£æä½³ä½ã</p>
-							</div>
-							<div class="post-permalink">
-								<a href="#" class="btn btn-default">æ¥çè¯¦æ</a>
-							</div>
-							<div class="footer">
-								<hr>
-								<div class="pull-left tag-list">
-									æä½³å­£èï¼åå­£çå®ã
-								</div>
-							</div>
-						</article>-->
 
-				</div>
-				<!-- å·¦ä¾§åå®¹åº -->
-				<!-- ä¾§è¾¹æ é¨å -->
-				<aside class="col-md-4 sidebar">
-					<!--ç­é¨æç´¢-->
-					<div class="widget">
-						<h4 class="title">热点搜索</h4>
-						<div class="content">
-							<!--æç´¢ç»-->
-							<div class="form-group  ">
-								<div class="input-group">
-									<input type="text" class="form-control"
-										placeholder="搜索你想要的热点吧！"> <span
-										class="input-group-addon"><span
-										class="glyphicon glyphicon-search"></span></span>
-								</div>
-							</div>
-							<!--æç´¢ç»-->
+			<div class="row">
+				<!-- 每行3列 -->
+				<div class="col-md-3">
+					<div class="thumbnail primeList">
+						<a href='#' class='primeListImg'> <img
+							src="<%=path%>/images/chunjie.jpg"> <a href='#'
+							class='like'><span class='glyphicon glyphicon-heart'></span>
+								点赞</a>
+						</a>
+
+						<div class="caption">
+							<h3 class='ellipsis'>
+								<a href='#'>雷州话（即雷州方言），简称雷话，属闽语系一支
+									，是海内外雷人同胞的共同母语。主要分布于国内的广东省西南部 、广西东南部 、海南北部以及海外的东南亚、欧美华人 </a>
+							</h3>
+							<p class='text-muted'>
+								已有<span class='redColor'>12</span>人点赞
+							</p>
 						</div>
 					</div>
-					<div class="widget">
-							<h4 class="title">公告消息</h4>
-							<div class="content community">
-								<ul class='Message'>
-									<li><a href='#' >雷州一批作品获奖</a></li>
-									<li><a href='#' >医院也“坑人”?雷州卫计部门将调查淋球菌事件</a></li>
-									<li><a href='#' >雷州潮溪村恢复村落古朴原貌</a></li>
-									<li><a href='#' >组图:安徽夫妇在雷州市化缘乞讨被当人贩子遭暴打</a></li>
-									<li><a href='#' >湛江朝发村河段水体黑臭引关注 雷州青年运河东海河整治工程加快推进</a> </li>
-								</ul>
-								<!-- <p>QQ群：277327792</p>
-								
-								<p><a href="#"> 官方微博</a></p> -->
-							</div>
+				</div>
+				<!-- 每行3列 -->
+				<!-- 每行3列 -->
+				<div class="col-md-3">
+					<div class="thumbnail primeList">
+						<a href='#' class='primeListImg'> <img
+							src="<%=path%>/images/chunjie.jpg"> <a href='#'
+							class='like'><span class='glyphicon glyphicon-heart'></span>
+								点赞</a>
+						</a>
+
+						<div class="caption">
+							<h3 class='ellipsis'>
+								<a href='#'>雷州话（即雷州方言），简称雷话，属闽语系一支
+									，是海内外雷人同胞的共同母语。主要分布于国内的广东省西南部 、广西东南部 、海南北部以及海外的东南亚、欧美华人 </a>
+							</h3>
+							<p class='text-muted'>
+								已有<span class='redColor'>12</span>人点赞
+							</p>
 						</div>
-						<div class="widget">
-							<h4 class="title">论坛发帖</h4>
-							<div class="content download">
-								<a href="#" class="btn btn-default btn-block">参与发帖</a>
-							</div>
+					</div>
+				</div>
+				<!-- 每行3列 -->
+				<!-- 每行3列 -->
+				<div class="col-md-3">
+					<div class="thumbnail primeList">
+						<a href='#' class='primeListImg'> <img
+							src="<%=path%>/images/chunjie.jpg"> <a href='#'
+							class='like'><span class='glyphicon glyphicon-heart'></span>
+								点赞</a>
+						</a>
+
+						<div class="caption">
+							<h3 class='ellipsis'>
+								<a href='#'>雷州话（即雷州方言），简称雷话，属闽语系一支
+									，是海内外雷人同胞的共同母语。主要分布于国内的广东省西南部 、广西东南部 、海南北部以及海外的东南亚、欧美华人 </a>
+							</h3>
+							<p class='text-muted'>
+								已有<span class='redColor'>12</span>人点赞
+							</p>
 						</div>
-						<div class="widget">
-							<h4 class="title">旅游热点</h4>
-							<div class="content tag-cloud">
-								<a href="#">湖光岩</a>
-								<a href="#">吉兆湾</a>
-								<a href="#">东海岛</a>
-								<a href="#">观海长廊</a>
-								<a href="#">红树林</a>
-								<a href="#">硇洲岛</a>
-								<a href="#">雷州乌石镇天成台</a>
-								<a href="#">广东海洋大学</a>
-								<a href="#">特呈岛</a>
-								<a href="#">南亚热带植物园</a>
-								<a href="#">湛江海滨公园</a>
-								<a href="#">西湖</a>
-								
-								<a href="#">...</a>
-							</div>
+					</div>
+				</div>
+				<!-- 每行3列 -->
+				<!-- 每行3列 -->
+				<div class="col-md-3">
+					<div class="thumbnail primeList">
+						<a href='#' class='primeListImg'> <img
+							src="<%=path%>/images/chunjie.jpg"> <a href='#'
+							class='like'><span class='glyphicon glyphicon-heart'></span>
+								点赞</a>
+						</a>
+
+						<div class="caption">
+							<h3 class='ellipsis'>
+								<a href='#'>雷州话（即雷州方言），简称雷话，属闽语系一支
+									，是海内外雷人同胞的共同母语。主要分布于国内的广东省西南部 、广西东南部 、海南北部以及海外的东南亚、欧美华人 </a>
+							</h3>
+							<p class='text-muted'>
+								已有<span class='redColor'>12</span>人点赞
+							</p>
 						</div>
-				</aside>
-				<!-- 侧边栏部分 -->
+					</div>
+				</div>
+				<!-- 每行3列 -->
+				<!-- 每行3列 -->
+				<div class="col-md-3">
+					<div class="thumbnail primeList">
+						<a href='#' class='primeListImg'> <img
+							src="<%=path%>/images/chunjie.jpg"> <a href='#'
+							class='like'><span class='glyphicon glyphicon-heart'></span>
+								点赞</a>
+						</a>
+
+						<div class="caption">
+							<h3 class='ellipsis'>
+								<a href='#'>雷州话（即雷州方言），简称雷话，属闽语系一支
+									，是海内外雷人同胞的共同母语。主要分布于国内的广东省西南部 、广西东南部 、海南北部以及海外的东南亚、欧美华人 </a>
+							</h3>
+							<p class='text-muted'>
+								已有<span class='redColor'>12</span>人点赞
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- 每行3列 -->
 			</div>
-		</div>
+			<!-- 分页 -->
+			<nav>
+				<ul class="pagination pull-right">
+				<li class='disabled'><a href="#" > <span
+							aria-hidden="true">&laquo;</span>
+					</a></li>
+					<li><a href="#" > <span
+							aria-hidden="true">&laquo;</span>
+					</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">...</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#" aria-label="Next"> <span
+							aria-hidden="true">&raquo;</span>
+					</a></li>
+					<li   class='disabled'><a href="#"> <span
+							aria-hidden="true">&raquo;</span>
+					</a></li>
+				</ul>
+			</nav>
 	</section>
 	<!-- 底部 -->
 	<footer class="main-footer">

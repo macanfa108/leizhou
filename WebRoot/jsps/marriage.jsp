@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<!-- <li class="divider"></li> -->
 								<li><a href="<%=path %>/jsps/calligraphy.jsp"><span class="glyphicon glyphicon-check"></span>  书法碑刻</a></li>
 								<li><a href="<%=path %>/jsps/ operaCulture.jsp"><span class="glyphicon glyphicon-adjust"></span>  戏曲文化</a></li>
-								<li class="active"><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon-map-marker"></span>  婚嫁习俗</a></li>
+								<li class="active"><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon glyphicon-gift"></span>  婚嫁习俗</a></li>
 								<li><a href="<%=path %>/jsps/architecturalStyle.jsp"><span class="glyphicon glyphicon-map-marker"></span>  建筑风格</a></li>
 							</ul>
 						</li>
@@ -145,32 +145,115 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="row">
 					<!-- 左侧内容区 -->
 					<div class="col-md-8 main-content">
+						<!-- 循环内容部分 -->
 						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
 							<div class="post-head">
-								<h2 class="post-title"><a href="#">婚嫁习俗</a></h2>
+								<h2 class="post-title"><a href="#">婚嫁</a></h2>
 							</div>
+							<hr>
 							<div class="post-meta">
-								<span class="author">
+								<!-- <span class="author">
 									建议游玩：<a href="#">2天</a>
 								</span>
-								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
 							</div>
 							<div class="post-content">
-								<img src="<%=path %>/images/carouselImages/1.jpg" alt="雷州特色文化" class="img-thumbnail">
-								<div class="height_20"></div>
-								<p>湛江市位于中国大陆最南端，广东省西南部，省相望，西临北部湾，背靠大西南。湛江地区旧称“广州湾”。…</p>
+								<!-- <div class="height_20"></div> -->
+									<img src="<%=path%>/images/hunsu.png"  class="img-thumbnail" style='width:100%;' />
+								<p class='content'>
+									旧时雷州姑娘出嫁，婚事皆由父母之命、媒约之言而定，故有“婚姻父安母种”的谚语流行。一般六、七岁时便对了亲家(订婚)，也有在二、三岁对亲家的“鸡对仔”，甚至还有指腹为婚者。对亲家过程，男方先由媒人送个礼盒到女家，盒子内装有槟榔、果品、红糖等。富裕人家用银盒、锡盒或精制漆盒，穷苦百姓则用彩布包裹礼品。若是女家初步同意，则由家中长辈开盒取出一个槟榔，俗称“吃了人家槟榔”。下一步，就是男女双方交换“庚帖”(即用红纸写上出生年、月、日、时辰)，请算命先生“合命”，如两人“五行相生，命根相合”，则由男家送头过礼。礼品扶跨过门槛底下一堆燃着的“火烟”，称作“骑金马”，矢志跨进夫家；如遇新娘来潮，就要在“火烟”上加放一只稻草扎，称作“骑竹马”。新郎还要接受挑谷种的青郎的祝贺。青郎可以一口气；做出十来二十首诗句。每做一首，新郎要赏以红包。新郎接过竹苗谷种栽于屋后，撒于田里，象征栽下新生活，播下幸福种。
+比较有趣的一个就是“压床头”，即结婚前一个礼拜，新郎官要跟一个小孩子一起睡，这样可以确保能早生贵子。还有就是吃槟榔，也就是如果男方提亲，女方家长同意后，就会从盒子中取出一个槟榔吃，以示同意这门婚事。
+新娘进门之后，要在一位婆家请来的“青娘母”(极善辞令，又能即兴吟诗做对的人)陪伴着，举行各种仪式，如与新郎吃“合房圆”，进入洞房，上厅堂给长辈、平辈端茶行拜见礼，“闹洞房”等。
+
+								</p>
 							</div>
-							<div class="post-permalink">
+							<!-- <div class="post-permalink">
 								<a href="#" class="btn btn-default">查看详情</a>
-							</div>
+							</div> -->
 							<div class="footer">
 								<hr>
-								<div class="pull-left tag-list">
+								<!-- <div class="pull-left tag-list">
 									最佳季节：四季皆宜。
-								</div>
+								</div> -->
 							</div>
 						</article>
+						<!-- 循环内容部分 -->
 						
+						<!-- 循环内容部分 -->
+						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
+							<div class="post-head">
+								<h2 class="post-title"><a href="#">春节</a></h2>
+							</div>
+							<hr>
+							<div class="post-meta">
+								<!-- <span class="author">
+									建议游玩：<a href="#">2天</a>
+								</span>
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
+							</div>
+							<div class="post-content">
+								<img src="<%=path%>/images/chunjie.jpg"  class="img-thumbnail" style='width:100%;' />
+								<div class="height_20"></div>
+								<p class='content'>
+									千百年来，已经形成了一套颇具民间色彩的风俗习惯，相传至今，它基本保留着夏商时代太行山以东地区的习俗，这些看似“迷信”的习俗，但你深入了解后，就会发现，其中不少蕴含着鲜为人知的人文历史知识，体现出中华民族对先祖念念不忘的情怀，兹列其下：
+     一、扫尘。腊月二十四要大扫除。
+     二、做筐炊粑、叶搭饼。
+     三、做发财。腊月廿八要做发财。
+     四、祭公祖。腊月廿九祭祠堂公祖。
+     五、贴门对，贴门神。腊月三十（除夕）早，房屋各门贴对联、门神。大厅顶阁横梁上贴上“金玉满堂”横额。
+    六、围炉，全家团聚在一起，吃过年夜饭，点起蜡烛或油灯，围坐炉旁闲聊，等着辞旧迎新的时刻，通宵守夜。父母亲可将事先准备好的用红包装着的压岁钱偷偷放在孩子枕头底下。
+    七、点油灯。腊月三十（除夕）晚开始至到十五日二十四时止。寓意丁财两旺，人丁繁衍不息。
+     八、等贡。二十四时正，燃放爆竹，迎接新年，此时，万炮齐鸣，震耳欲聋。
+     九、拜年。正月初一，人们早早起来，穿上最漂亮的衣服，打扮得整整齐齐，出门去走亲访友，相互拜年，恭祝来年大吉大利。
+     十、闹元霄。正月十五，各社区组织起来抬公祖游街，舞龙队领头，舞狮队随后，敲锣打鼓，喜气洋洋。
+
+								</p>
+							</div>
+							
+							<!-- <div class="post-permalink">
+								<a href="#" class="btn btn-default">查看详情</a>
+							</div> -->
+							<div class="footer">
+								<hr>
+								<!-- <div class="pull-left tag-list">
+									最佳季节：四季皆宜。
+								</div> -->
+							</div>
+						</article>
+						<!-- 循环内容部分 -->
+						<!-- 循环内容部分 -->
+						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
+							<div class="post-head">
+								<h2 class="post-title"><a href="#">年例</a></h2>
+							</div>
+							<hr>
+							<div class="post-meta">
+								<!-- <span class="author">
+									建议游玩：<a href="#">2天</a>
+								</span>
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
+							</div>
+							<div class="post-content">
+								<img src="<%=path%>/images/nianli.jpg"  class="img-thumbnail" style='width:100%;' />
+								<div class="height_20"></div>
+								<p class='content'>
+								年例与春节等传统节日不同，是粤西地区特有的以祭祀为主的群体性节庆，主旨是敬神、拜宗、祭祀社稷，以祈祷风调雨顺、国泰民安，百业兴旺的大型民俗活动，形式丰富多彩，富有神秘色彩，充满独特的地方风情和浓厚的乡土气息，并以它绚丽的色彩和千姿百态的动作，而深受中外观众的赞赏，其中东海岛东山镇的人龙舞独具特色，被誉为“东方一绝”，不少被确认为非物质文化遗产。
+雷州年例现已演变为由各坊统一组织的游“元宵”，规模更大，其时老少欢欣，万人空巷。在农村，有延至二十八或二月十二的，并一致。
+								
+								</p>
+							</div>
+							
+							<!-- <div class="post-permalink">
+								<a href="#" class="btn btn-default">查看详情</a>
+							</div> -->
+							<div class="footer">
+								<hr>
+								<!-- <div class="pull-left tag-list">
+									最佳季节：四季皆宜。
+								</div> -->
+							</div>
+						</article>
+						<!-- 循环内容部分 -->
 					</div>
 					<!-- 左侧内容区 -->
 					<!-- 侧边栏部分 -->

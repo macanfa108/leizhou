@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<!-- <li class="divider"></li> -->
 								<li><a href="<%=path %>/jsps/calligraphy.jsp"><span class="glyphicon glyphicon-check"></span>  书法碑刻</a></li>
 								<li  class="active"><a href="<%=path %>/jsps/ operaCulture.jsp"><span class="glyphicon glyphicon-adjust"></span>  戏曲文化</a></li>
-								<li><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon-map-marker"></span>  婚嫁习俗</a></li>
+								<li><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon glyphicon-gift"></span>  婚嫁习俗</a></li>
 								<li><a href="<%=path %>/jsps/architecturalStyle.jsp"><span class="glyphicon glyphicon-map-marker"></span>  建筑风格</a></li>
 							</ul>
 						</li>
@@ -145,31 +145,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="row">
 					<!-- 左侧内容区 -->
 					<div class="col-md-8 main-content">
+						<!-- 循环内容部分 -->
 						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
 							<div class="post-head">
-								<h2 class="post-title"><a href="#">戏曲文化</a></h2>
+								<h2 class="post-title"><a href="#">雷剧</a></h2>
 							</div>
+							<hr>
 							<div class="post-meta">
-								<span class="author">
+								<!-- <span class="author">
 									建议游玩：<a href="#">2天</a>
 								</span>
-								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
 							</div>
 							<div class="post-content">
-								<img src="<%=path %>/images/carouselImages/1.jpg" alt="雷州特色文化" class="img-thumbnail">
+							<!-- video中的src后台改动 -->
+								<video src="<%=path%>/video/leizhouhua.mp4"  class="img-thumbnail"  controls="controls"></video>
 								<div class="height_20"></div>
-								<p>湛江市位于中国大陆最南端，广东省西南部，省相望，西临北部湾，背靠大西南。湛江地区旧称“广州湾”。…</p>
+								<p class='content'>
+									雷剧原名大歌班，流行于雷州民系圈内人们喜闻乐见、人人传唱的一朵艺术奇葩，具有浓郁而鲜明的地方特色。
+雷剧起源于雷州歌，经过姑娘歌，劝世歌、大班歌、雷剧四个发展阶段，到剧种形成历时300多年。近年，经过雷剧工作者的不断探索、改革，雷剧已拥有80多种腔调。
+湛江，是雷剧的故乡。雷剧植根于雷州半岛，土生土长，由于它语言通俗易懂，并能很好地反映现实生活，越来越为雷州人民所喜爱。
+2011年入选第三批国家级非物质文化遗产名录。
+								</p>
 							</div>
-							<div class="post-permalink">
+							<div class="post-content">
+								<img src="<%=path%>/images/liaohongyuguashuai.png"  class="img-thumbnail" style='width:100%;' />
+								<div class="height_20"></div>
+								<p class='content'>
+									现在雷剧已具有相应的规模，整个团体的艺术结构达到戏曲剧种的要求与条件，观众喜爱有加。雷剧经历三四百年的发展，已经走向成熟。湛江市实验雷剧团1992年一度晋京演出，卢凌日创作的《抓阉村长》，深受京华观众的好评，获得中宣部“五个一工程”奖。从此，雷剧在北京的剧坛上传出了前所未有的一声南方巨雷。2001年，该团相隔10年后第二次晋京演出古装雷剧《梁红玉挂帅》，主演员林奋获得中国戏剧最高奖“梅花奖”。
+2007年雷剧艺术节闭幕式上，雷州市委市政府表彰了2006年雷州市雷剧艺术节获奖单位和个人，授予雷州市委宣传部为最佳组织奖；雷州市文化广电新闻出版局等4个单位被授予组织奖；雷州市委办公室等60个单位获得贡献奖；雷州市雷剧团获特等奖，获奖剧团还有金奖2个、银奖5个、优秀奖7个；陈吴森编剧《月亮湾》获“樟树湾杯”一等奖，获得二等奖与三等奖分别有3个和4个；雷州市雷剧艺术节“百年雷剧大论坛”获奖论文优秀奖20篇，入选奖19篇，纪念奖5篇；莫廉、陈尚湘、戚建平获特殊贡献奖个人；
+
+								</p>
+							</div>
+							<!-- <div class="post-permalink">
 								<a href="#" class="btn btn-default">查看详情</a>
-							</div>
+							</div> -->
 							<div class="footer">
 								<hr>
-								<div class="pull-left tag-list">
+								<!-- <div class="pull-left tag-list">
 									最佳季节：四季皆宜。
-								</div>
+								</div> -->
 							</div>
 						</article>
+						<!-- 循环内容部分 -->
+						
 						
 					</div>
 					<!-- 左侧内容区 -->

@@ -1,20 +1,28 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page contentType="text/html; charset=GB2312" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<jsp:directive.page import="com.wy.bean.DiscussBean" />
+<jsp:directive.page import="java.util.List" />
+<jsp:directive.page import="com.wy.bean.AnnounceBean"/>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<!DOCTYPE html>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>×ª·¢µ½Ê×Ò³</title>
 
-  </head>
-  
-  <body>
-    Ìø×ªµ½Ê×Ò³£¡
-    <jsp:forward  page='/jsps/index.jsp' />
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>æ¬¢è¿Žæ¥åˆ°é›·å·žç½‘</title>
+
+	</head>
+
+	<body>
+
+		<jsp:forward page='<%=path%>/jsps/index.jsp' />
+
+	</body>
+
 </html>

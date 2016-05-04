@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<!-- <li class="divider"></li> -->
 								<li><a href="<%=path %>/jsps/calligraphy.jsp"><span class="glyphicon glyphicon-check"></span>  书法碑刻</a></li>
 								<li><a href="<%=path %>/jsps/ operaCulture.jsp"><span class="glyphicon glyphicon-adjust"></span>  戏曲文化</a></li>
-								<li><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon-map-marker"></span>  婚嫁习俗</a></li>
+								<li><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon glyphicon-gift"></span>  婚嫁习俗</a></li>
 								<li><a href="<%=path %>/jsps/architecturalStyle.jsp"><span class="glyphicon glyphicon-map-marker"></span>  建筑风格</a></li>
 							</ul>
 						</li>
@@ -145,31 +145,101 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="row">
 					<!-- 左侧内容区 -->
 					<div class="col-md-8 main-content">
+					<!-- 循环内容部分 -->
 						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
 							<div class="post-head">
-								<h2 class="post-title"><a href="#">语言文学</a></h2>
+								<h2 class="post-title"><a href="#">雷州话</a></h2>
 							</div>
+							<hr>
 							<div class="post-meta">
-								<span class="author">
+								<!-- <span class="author">
 									建议游玩：<a href="#">2天</a>
 								</span>
-								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
 							</div>
 							<div class="post-content">
-								<img src="<%=path %>/images/carouselImages/1.jpg" alt="雷州特色文化" class="img-thumbnail">
+							<!-- video中的src后台改动 -->
+								<video src="<%=path%>/video/leizhouhua.mp4"  class="img-thumbnail"  controls="controls"></video>
 								<div class="height_20"></div>
-								<p>湛江市位于中国大陆最南端，广东省西南部，省相望，西临北部湾，背靠大西南。湛江地区旧称“广州湾”。…</p>
+								<p class='content'>
+									雷州话（即雷州方言），简称雷话，属闽语系一支 ，是海内外雷人同胞的共同母语。主要分布于国内的广东省西南部 、广西东南部 、海南北部以及海外的东南亚、欧美华人华侨聚集地区。雷州话通行范围很广 ，是雷州半岛及周边地区人民的日常生活使用语言。今湛江市属的雷州市、遂溪县、徐闻县、麻章区、东海岛、赤坎区、霞山区、坡头区、廉江市南部、吴川市东部及粤西、桂东南、琼北等县（市）、区乡镇通行雷州话，国内人口覆盖800多万，海外人口约150万，为广东省四大方言之一。
+以雷州话为基本特征的“雷州文化”，与“潮汕文化、客家文化、广府文化”构成当今岭南四大地域文化。
+雷州话中保留的古汉语很多特色，例如在人称上，雷州话就很有古味，白文中的“他”或“她”，雷州话却用“伊”字。
+还有在第二人称代词“你”字，雷州话却用“汝”字（很多人写雷州方言是都用“鲁”字取代“你”，这是不正确的写法，只能起到谐音，但没有一点含义），
+另外，在时间上也保留着古老的时刻，如果一个外地人听起来简直是要古汉语词典了，例如：日斗（中午），船年（前年）等，很有味道。
+另一个比较明显的是，雷州话中的状语后置，在现代汉语中，状语一般位于谓语之前，但雷州话如今却依旧保留着这个古汉语状语后置的特点。
+
+例如：在现代汉语中的“你要多吃一点。”而雷州话却把“多”这个状语放到了“吃”谓语之后，形成了“你要吃多一点。”
+雷州话中的读音也和普通话一样有书面和口语两种，但口语在雷州话平常交际中十分普遍例如“黄”就有两种读音，分别为“ui5”（口语）和“huang5”。
+雷州话中的不定冠词也有异于现代汉语的，这可能也是地方特色吧。如果写入作文的话，你真的不知应该是对还是错的，如：普通话中称一只鞋，而雷州话却说成“一脚鞋”，还有一丛树（一棵树），这些和闽南语是一样的。
+还有本音字，但由于历史的发展，这些字在现代汉语中已消失了不少。从中我们也可以看出雷州话的古老。
+例如：“湿”字，雷州话中就有“dam（类似“淡”字的雷语）”的原字为“氵耽”，现只能从语言中感受这个字了。
+									
+								</p>
 							</div>
-							<div class="post-permalink">
+							<!-- <div class="post-permalink">
 								<a href="#" class="btn btn-default">查看详情</a>
-							</div>
+							</div> -->
 							<div class="footer">
 								<hr>
-								<div class="pull-left tag-list">
+								<!-- <div class="pull-left tag-list">
 									最佳季节：四季皆宜。
-								</div>
+								</div> -->
 							</div>
 						</article>
+						<!-- 循环内容部分 -->
+						
+						<!-- 循环内容部分 -->
+						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
+							<div class="post-head">
+								<h2 class="post-title"><a href="#">地方文化</a></h2>
+							</div>
+							<hr>
+							<div class="post-meta">
+								<!-- <span class="author">
+									建议游玩：<a href="#">2天</a>
+								</span>
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
+							</div>
+							<div class="post-content">
+								<img src="<%=path%>/images/leizhouCulture.jpg"  class="img-thumbnail" style='width:100%;' />
+								<div class="height_20"></div>
+								<p class='content'>
+									几乎每一类“俗语、谚语、歇后语”都包含有雷州文化。如“日头落水”，日头乃太阳，太阳总是高在人们的头上而称日头，日头落水乃太阳下山的意思。
+雷州半岛三面临海，没有山脉，所以将太阳往西沉没入地平线的现象概括为“日头落水”，又如“三八四月”，
+古代雷州半岛先人生产力落后，每逢三月，四月，八月便会闹饥荒，所以“三八四月”的意思就是“荒时暴月，青黄不接之时”。
+在雷州方言里头，“土”和“通俗”乃其一大特色，“土”，来源生活或取材生活，在现实生活中能找到相关的来源，
+如“上轿包脚”，古代妇女常把脚裸以下的部分包扎起来，也就是所说的“三寸金莲”，在海康古代，没有把脚包扎成“三寸金莲”的女人是嫁不出去的，
+或者被世人骂成不守妇道，上轿，出嫁的意思，在出嫁的时候才包扎脚，那就是懒惰，比喻平时没有准备，事到临头才慌乱准备，
+又如“公仔抬高就见脚”，公仔戏，雷州半岛的一种木偶戏，由人来操纵其动作形态的变化，当人把公仔高举起时会不自觉地把木偶的一些缺点或短处暴露出来，所以“公仔抬高就见脚”的意思是没有真才实学，一遇上情况便暴露出了马脚。
+									
+								</p>
+							</div>
+							<div class="post-content">
+								<img src="<%=path%>/images/shigou.jpg"  class="img-thumbnail" style='width:100%;' />
+								<div class="height_20"></div>
+								<p class='content'>
+									几乎每一类“俗语、谚语、歇后语”都包含有雷州文化。如“日头落水”，日头乃太阳，太阳总是高在人们的头上而称日头，日头落水乃太阳下山的意思。
+雷州半岛三面临海，没有山脉，所以将太阳往西沉没入地平线的现象概括为“日头落水”，又如“三八四月”，
+古代雷州半岛先人生产力落后，每逢三月，四月，八月便会闹饥荒，所以“三八四月”的意思就是“荒时暴月，青黄不接之时”。
+在雷州方言里头，“土”和“通俗”乃其一大特色，“土”，来源生活或取材生活，在现实生活中能找到相关的来源，
+如“上轿包脚”，古代妇女常把脚裸以下的部分包扎起来，也就是所说的“三寸金莲”，在海康古代，没有把脚包扎成“三寸金莲”的女人是嫁不出去的，
+或者被世人骂成不守妇道，上轿，出嫁的意思，在出嫁的时候才包扎脚，那就是懒惰，比喻平时没有准备，事到临头才慌乱准备，
+又如“公仔抬高就见脚”，公仔戏，雷州半岛的一种木偶戏，由人来操纵其动作形态的变化，当人把公仔高举起时会不自觉地把木偶的一些缺点或短处暴露出来，所以“公仔抬高就见脚”的意思是没有真才实学，一遇上情况便暴露出了马脚。
+									
+								</p>
+							</div>
+							<!-- <div class="post-permalink">
+								<a href="#" class="btn btn-default">查看详情</a>
+							</div> -->
+							<div class="footer">
+								<hr>
+								<!-- <div class="pull-left tag-list">
+									最佳季节：四季皆宜。
+								</div> -->
+							</div>
+						</article>
+						<!-- 循环内容部分 -->
 						
 					</div>
 					<!-- 左侧内容区 -->

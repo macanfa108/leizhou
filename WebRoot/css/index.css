@@ -56,6 +56,8 @@ body{
 .post .post-content p{
 	margin-top:0;
 	margin-bottom:1.46em;
+	color:#666;
+	text-indent:2em;
 }
 .btn{
 	padding:7px 14px;
@@ -172,5 +174,4 @@ ul.Message li:before{
 	padding:2px 8px;
 	color:#fff;
 	margin-right:5px;
-	
 }

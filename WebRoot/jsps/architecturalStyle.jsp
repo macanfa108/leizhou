@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<!-- <li class="divider"></li> -->
 								<li><a href="<%=path %>/jsps/calligraphy.jsp"><span class="glyphicon glyphicon-check"></span>  书法碑刻</a></li>
 								<li><a href="<%=path %>/jsps/ operaCulture.jsp"><span class="glyphicon glyphicon-adjust"></span>  戏曲文化</a></li>
-								<li><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon-map-marker"></span>  婚嫁习俗</a></li>
+								<li><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon glyphicon-gift"></span>  婚嫁习俗</a></li>
 								<li  class="active"><a href="<%=path %>/jsps/architecturalStyle.jsp"><span class="glyphicon glyphicon-map-marker"></span>  建筑风格</a></li>
 							</ul>
 						</li>
@@ -145,32 +145,136 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="row">
 					<!-- 左侧内容区 -->
 					<div class="col-md-8 main-content">
+						<!-- 循环内容部分 -->
 						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
 							<div class="post-head">
 								<h2 class="post-title"><a href="#">建筑风格</a></h2>
 							</div>
+							<hr>
 							<div class="post-meta">
-								<span class="author">
+								<!-- <span class="author">
 									建议游玩：<a href="#">2天</a>
 								</span>
-								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
 							</div>
 							<div class="post-content">
-								<img src="<%=path %>/images/carouselImages/1.jpg" alt="雷州特色文化" class="img-thumbnail">
-								<div class="height_20"></div>
-								<p>湛江市位于中国大陆最南端，广东省西南部，省相望，西临北部湾，背靠大西南。湛江地区旧称“广州湾”。…</p>
+							<!-- video中的src后台改动 -->
+								<%-- <video src="<%=path%>/video/leizhouhua.mp4"  class="img-thumbnail"  controls="controls"></video> --%>
+								
+								<p class='content'>
+									雷州古民居平面组合除个别官宦的府第呈现较规模的建筑外，多为三合院形式，四周高墙齐整，防火防盗功能显著。一般大宗族多聚族而居，而每个小家小户只有一至两进院落，同族的多户连成一行，排列在巷道的两侧。
+									
+								</p>
+								<!-- 这里是分行显示了这两段内容，不方便将内容放到一个class='content‘中就行了，多余的删除掉 -->
+								<p class='content'>
+									住宅多以厅堂为中心布局，具有中轴明显，左右对称，主次有序特点的封闭型建筑，厅堂是家庭祭祀、凶吉大事的主要活动场所。厢房在厅的两侧，是主人的居室。天井左右两侧的房间，一般用作厨房和杂物间。有的民居，在正厅对面还设三间房，称为倒座。下面是特色建筑介绍：
+								</p>
 							</div>
-							<div class="post-permalink">
+							<!-- <div class="post-permalink">
 								<a href="#" class="btn btn-default">查看详情</a>
-							</div>
+							</div> -->
 							<div class="footer">
-								<hr>
-								<div class="pull-left tag-list">
+								<!-- <hr> -->
+								<!-- <div class="pull-left tag-list">
 									最佳季节：四季皆宜。
-								</div>
+								</div> -->
 							</div>
 						</article>
+						<!-- 循环内容部分 -->
 						
+						<!-- 循环内容部分 -->
+						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
+							<div class="post-head">
+								<h2 class="post-title"><a href="#">雷阳书院</a></h2>
+							</div>
+							<hr>
+							<div class="post-meta">
+								<!-- <span class="author">
+									建议游玩：<a href="#">2天</a>
+								</span>
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
+							</div>
+							<div class="post-content">
+								<img src="<%=path%>/images/leizhoushuyuan.jpg"  class="img-thumbnail" style='width:100%;' />
+								<div class="height_20"></div>
+								<p class='content'>
+									雷阳书院 建于明代，清光绪年间曾为广东六大书院之一。位于雷州西湖公园内、寇公调之东。原为天宁寺西馆（曾建为寇公调），南宋成淳八年（1272年）郡守陈大震更词为院，即在寇公词内设莱泉书院，元初取苏轼“西湖平，状元生”诗，改名平湖书院。清嘉庆二十三年（1818年），海康知县谢邦基与名学者陈昌齐倡议重修，才更为今名。清末罢科举一兴学校，光绪三十年（1904年）元月，改书院为官立高等小学堂。数百年中，该院培养了大量人才。
+								</p>
+							</div>
+							
+							<!-- <div class="post-permalink">
+								<a href="#" class="btn btn-default">查看详情</a>
+							</div> -->
+							<div class="footer">
+								<hr>
+								<!-- <div class="pull-left tag-list">
+									最佳季节：四季皆宜。
+								</div> -->
+							</div>
+						</article>
+						<!-- 循环内容部分 -->
+						<!-- 循环内容部分 -->
+						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
+							<div class="post-head">
+								<h2 class="post-title"><a href="#">陈清端公祠</a></h2>
+							</div>
+							<hr>
+							<div class="post-meta">
+								<!-- <span class="author">
+									建议游玩：<a href="#">2天</a>
+								</span>
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
+							</div>
+							<div class="post-content">
+								<img src="<%=path%>/images/gongsi.jpg"  class="img-thumbnail" style='width:100%;' />
+								<div class="height_20"></div>
+								<p class='content'>
+									陈清端公祠 座落于广东省雷州市雷城内大新街，为纪念清康熙年间福建巡抚陈扶的饲堂。1718年建，调为三进院落式布局，由中堂、西侧厢房和东西辕门组成；内存有康熙赐陈扶的御笔诗木匾等珍贵文物。
+								</p>
+							</div>
+							
+							<!-- <div class="post-permalink">
+								<a href="#" class="btn btn-default">查看详情</a>
+							</div> -->
+							<div class="footer">
+								<hr>
+								<!-- <div class="pull-left tag-list">
+									最佳季节：四季皆宜。
+								</div> -->
+							</div>
+						</article>
+						<!-- 循环内容部分 -->
+						<!-- 循环内容部分 -->
+						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
+							<div class="post-head">
+								<h2 class="post-title"><a href="#">海康学宫</a></h2>
+							</div>
+							<hr>
+							<div class="post-meta">
+								<!-- <span class="author">
+									建议游玩：<a href="#">2天</a>
+								</span>
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
+							</div>
+							<div class="post-content">
+								<img src="<%=path%>/images/leizhouxuegong.jpg"  class="img-thumbnail" style='width:100%;' />
+								<div class="height_20"></div>
+								<p class='content'>
+									县学宫即海康县学宫，又称东圣宫，位于城内镇中西路，今雷城第一小学所在地。元至顺三年（1332年）创建于迎恩访，明弘治七年（1504年）重建迁至今址。原存碑刻等文物较多，“十年浩劫”时尽毁。现尚有大成殿及东西后廊，殿前有石砌高台，绕以石栏。另有乡贤碑一块（现藏市博物馆），上刻唐至清初海康名人的姓名、学位和职务。府学富宫即雷州府学宫，又名西圣宫，在今雷城第三小学内。原建筑规模宏伟，宫殿高大，气势非凡；内有高8米的孔子塑像，大幅“为人师表”匾等等，可惜这些已拆毁。现得以保存、藏于市博物馆的有南宋淳熙年间“孔子与弟子石碑刻像”及明万历年“魁”宇石碑各一。
+								</p>
+							</div>
+							
+							<!-- <div class="post-permalink">
+								<a href="#" class="btn btn-default">查看详情</a>
+							</div> -->
+							<div class="footer">
+								<hr>
+								<!-- <div class="pull-left tag-list">
+									最佳季节：四季皆宜。
+								</div> -->
+							</div>
+						</article>
+						<!-- 循环内容部分 -->
 					</div>
 					<!-- 左侧内容区 -->
 					<!-- 侧边栏部分 -->

@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<!-- <li class="divider"></li> -->
 								<li  class="active"><a href="<%=path %>/jsps/calligraphy.jsp"><span class="glyphicon glyphicon-check"></span>  书法碑刻</a></li>
 								<li><a href="<%=path %>/jsps/ operaCulture.jsp"><span class="glyphicon glyphicon-adjust"></span>  戏曲文化</a></li>
-								<li><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon-map-marker"></span>  婚嫁习俗</a></li>
+								<li><a href="<%=path %>/jsps/marriage.jsp"><span class="glyphicon glyphicon glyphicon-gift"></span>  婚嫁习俗</a></li>
 								<li><a href="<%=path %>/jsps/architecturalStyle.jsp"><span class="glyphicon glyphicon-map-marker"></span>  建筑风格</a></li>
 							</ul>
 						</li>
@@ -145,31 +145,79 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="row">
 					<!-- 左侧内容区 -->
 					<div class="col-md-8 main-content">
+						<!-- 循环内容部分 -->
 						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
 							<div class="post-head">
-								<h2 class="post-title"><a href="#">书法碑刻</a></h2>
+								<h2 class="post-title"><a href="#">雷州书法</a></h2>
 							</div>
+							<hr>
 							<div class="post-meta">
-								<span class="author">
+								<!-- <span class="author">
 									建议游玩：<a href="#">2天</a>
 								</span>
-								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
 							</div>
 							<div class="post-content">
-								<img src="<%=path %>/images/carouselImages/1.jpg" alt="雷州特色文化" class="img-thumbnail">
+							<!-- video中的src后台改动 -->
+								<video src="<%=path%>/video/leizhouhua.mp4"  class="img-thumbnail"  controls="controls"></video>
 								<div class="height_20"></div>
-								<p>湛江市位于中国大陆最南端，广东省西南部，省相望，西临北部湾，背靠大西南。湛江地区旧称“广州湾”。…</p>
+								<a href='http://www.gdzjdaily.com.cn/zjnews/area/leizhou/2010-07/09/content_1228562.htm' >
+									<img src="<%=path%>/images/shufa.jpg"  class="img-thumbnail" style='width:100%;' />
+								</a>
+								<p class='content'>
+									雷州历史悠久，被国务院批准为99个国家历史文化名城之一。历代文人墨客题名撰额，能工巧匠镌匾雕楹，对雷州人热爱书法、崇尚书艺文化氛围的形成产生着熏陶与影响作用。
+ 多年来，全市习书作字之风盛行城乡，一大批书法人才脱颖而出。现有中国书协会员8人，省书协会员44人，湛江市书协会员60人，书法爱好者达近九万之众，雷州书法家作品入选中国、省书协主办的各项展览数百次，获奖人数100余次，出版了《名城墨韵——雷州人书画摄影作品集》等一批书法专著。
+ 随着书法创作的蓬勃发展，雷州书画产业日趋成熟。该市鼓励书法艺术人才创办书法产业实体，把书法资源优势转变为产业优势，做大做强书法艺术产业。书家们纷纷走出书斋，勇闯市场，以商兴文。目前，该市有书画装裱和交易所30多处，广告装璜公司40多间，从业人员3300多人，产值年达800多万元，书法产业已成为雷州经济又一个新的增长点。
+2010年7月8日，中国书法家协会授予雷州市“中国书法之乡”。
+									
+								</p>
 							</div>
-							<div class="post-permalink">
+							<!-- <div class="post-permalink">
 								<a href="#" class="btn btn-default">查看详情</a>
-							</div>
+							</div> -->
 							<div class="footer">
 								<hr>
-								<div class="pull-left tag-list">
+								<!-- <div class="pull-left tag-list">
 									最佳季节：四季皆宜。
-								</div>
+								</div> -->
 							</div>
 						</article>
+						<!-- 循环内容部分 -->
+						
+						<!-- 循环内容部分 -->
+						<article class="post tag-about-ghost tag-ghost-in-depth tag-zhu-shou-han-shu">
+							<div class="post-head">
+								<h2 class="post-title"><a href="#">雷州石刻</a></h2>
+							</div>
+							<hr>
+							<div class="post-meta">
+								<!-- <span class="author">
+									建议游玩：<a href="#">2天</a>
+								</span>
+								 • <time class="time" datetime="2015-5-18"></time>2015年5月18日 -->
+							</div>
+							<div class="post-content">
+								<img src="<%=path%>/images/shike.jpg"  class="img-thumbnail" style='width:100%;' />
+								<div class="height_20"></div>
+								<p class='content'>
+									广东雷州石料丰富，特别是青石。早在7000多年前生活在雷州半岛大地上的先民已制造出石斧、石锛、砺石、敲砸器、穿孔石器、束腰石网坠等。开始有了辉煌灿烂而又奇特的石雕石刻文化。碑刻是石刻最主要代表。
+碑刻是刻在碑上的文字或图画。一般理解为用书法体刻在碑石上的书法。是将书写好的墨迹复写于平整的石板（或石壁）或木板上，然后镌刻而成。雷州碑刻有石碑、木碑等，作为雷州半岛的古代首府，“天南重地”的雷州在碑刻艺术方面有着它光辉灿烂的一页。雷州古为州郡之治，历代各种碑刻、牌坊多达五六百件，但现在存留不过百八十件。
+作为雷州半岛的古代首府，“天南重地”的雷州在碑刻艺术方面有着它光辉灿烂的一页。雷州古为州郡之治，历代各种碑刻、牌坊多达五六百件，这些众多的碑刻、牌坊上的书或画，既是历史的见证，又是艺术的珍品。可惜，人世沧桑，变故频仍，尤其是毁于“破四旧”，现幸存留下来的，为数不过百八十件。其中，保存完好的石刻有：宋代的《孔子像石刻》、《魁字石刻》，元代的《雷祖富有利用碑》，明代的海瑞《天宁古刹》题额、何起龙《雷合武当》石坊，清代的《雷祖陈文玉像刻》。属木刻的有：清代康熙御笔《赠闽抚陈瑸诗匾》、陈昌齐草书屏刻、杨守敬《陈乔森墓志铭》等。民间的碑刻虽多用于墓志铭之类，但从中可看到碑刻艺术的新水平；尤其是木雕工艺事业发展迅速。主要有木雕工艺工艺家具和木雕屏风、龙阁、檐匾、门窗等。前者不但畅销国内各地，而且远销新加坡、美国、加拿大等众多国家，由此名扬海内外，被誉为“东方木雕一枝花”。
+									
+								</p>
+							</div>
+							
+							<!-- <div class="post-permalink">
+								<a href="#" class="btn btn-default">查看详情</a>
+							</div> -->
+							<div class="footer">
+								<hr>
+								<!-- <div class="pull-left tag-list">
+									最佳季节：四季皆宜。
+								</div> -->
+							</div>
+						</article>
+						<!-- 循环内容部分 -->
 						
 					</div>
 					<!-- 左侧内容区 -->
